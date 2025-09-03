@@ -243,9 +243,9 @@ async def initialize_and_generate_Image(request: ImageGenerateRequest):
         task_progress[request.task_id] = {"progress": 10, "status": "processing"}
         
         # 异步执行视频生成
-        image_path = await asyncio.get_event_loop().run_in_executor(
+        video_path = await asyncio.get_event_loop().run_in_executor(
             None,
-            lambda: asyncio.run(generatorgenerate_from_image(
+            lambda: asyncio.run(generator.generate_from_image(
                 image_path=request.image_path,
                 prompt=request.prompt,
                 negative_prompt=request.negative_prompt,
@@ -257,7 +257,8 @@ async def initialize_and_generate_Image(request: ImageGenerateRequest):
                 cfg_scale=request.cfg_scale,
                 motion_strength=request.motion_strength,
                 output_dir=request.output_dir,
-                task_id=request.task_id
+                task_id=request.task_id,
+
             ))
         )
         
@@ -387,7 +388,7 @@ async def initialize_and_generate_video(request: VideoGenerateRequest):
         # 异步执行视频生成
         video_path = await asyncio.get_event_loop().run_in_executor(
             None,
-            lambda: asyncio.run(generatorgenerate_from_image(
+            lambda: asyncio.run(generator.generate_from_image(
                 image_path=request.image_path,
                 prompt=request.prompt,
                 negative_prompt=request.negative_prompt,
@@ -399,7 +400,7 @@ async def initialize_and_generate_video(request: VideoGenerateRequest):
                 cfg_scale=request.cfg_scale,
                 motion_strength=request.motion_strength,
                 output_dir=request.output_dir,
-                task_id=request.task_id
+                task_id=request.task_id,
             ))
         )
         
