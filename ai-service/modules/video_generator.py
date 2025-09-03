@@ -14,6 +14,7 @@ import shutil
 import torch
 from PIL import Image
 import torchvision.transforms.functional as TF
+from .new_tqdm import NewTqdm
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +27,6 @@ class VideoGenerator:
     def __init__(self):
         self.model_loaded = False
         self.is_model_loaded = False
-        self.model = None
         self.model_path = None
         self.output_dir = None
         self.supported_formats = ['mp4', 'avi', 'mov']
@@ -154,16 +154,25 @@ class VideoGenerator:
                 progress_callbacks[task_id](progress, status)
             except Exception as e:
                 logger.error(f"Progress callback error: {e}")
-    
-    async def generate_from_image(self, image_path: str, prompt: str = "",
-                                 negative_prompt: str = "static, blurry, low quality",
-                                 duration: float = 5.0, fps: int = 24,
-                                 seed: Optional[int] = None,
-                                 tiled: bool = True,
-                                 num_inference_steps: int = 20,
-                                 cfg_scale: float = 7.5,
-                                 motion_strength: float = 0.5,
-                                 output_dir: str = "", task_id: str = "") -> str:
+
+    async def generate_from_image(self,
+                                image_path: str,
+                                prompt: str = "",
+                                negative_prompt: str = "static, blurry, low quality",
+                                height: int = 480, width: int = 832,
+                                duration: float = 5.0,
+                                fps: int = 24,
+                                seed: Optional[int] = None,
+                                tiled: bool = True,
+                                tile_size: tuple = (30, 52),
+                                num_inference_steps: int = 20,
+                                cfg_scale: float = 7.5,
+                                cfg_merge: bool = False,
+                                switch_DiT_boundary: float = 0.875,
+                                motion_strength: float = 0.5,
+                                output_dir: str = "",
+                                task_id: str = "",
+                                ) -> str:
         """从图像生成视频"""
         try:
             # 按需加载模型
@@ -194,6 +203,7 @@ class VideoGenerator:
             
             # 加载输入图像
             image = Image.open(image_path).convert('RGB')
+            #end_image = Image.open(end_img_path).convert('RGB')
             
             self._update_progress(task_id, 20, "正在优化提示词...")
             
@@ -213,7 +223,10 @@ class VideoGenerator:
             if seed is None:
                 seed = random.randint(0, sys.maxsize)
             full_prompt = f"{optimized_prompt}, cinematic lighting, smooth motion, realistic, high quality"
-            
+
+            #帧数,需设置为 4 的倍数 + 1，不满足时向上取整，最小值为 1。
+            num_frames = ((int(fps * duration) - 1) // 4 + 1) * 4 + 1
+
             logger.info(f"Generating video with prompt: {full_prompt}")
             logger.info(f"Parameters: seed={seed}, tiled={tiled}, steps={num_inference_steps}, cfg_scale={cfg_scale}")
             
@@ -222,13 +235,26 @@ class VideoGenerator:
                 video_tensor = self.model(
                     prompt=full_prompt,
                     negative_prompt=negative_prompt,
+                    width=width,height=height,
+                    num_frames=num_frames,
                     seed=seed,
                     tiled=tiled,
+                    tile_size=tile_size,
                     num_inference_steps=num_inference_steps,
                     cfg_scale=cfg_scale,
+                    cfg_merge=cfg_merge,
                     input_image=image,
+                    end_image=None,
+                    motion_bucket_id=motion_strength*100,
+                    rand_device="cpu",
+                    switch_DiT_boundary=switch_DiT_boundary,
+                    progress_bar_cmd=lambda x:NewTqdm(x, callback=progress_callbacks[task_id]),
                 )
-            
+            #未添加的参数：
+            #sliding_window_size: DiT 部分的滑动窗口大小。实验性功能，效果不稳定。
+            #sliding_window_stride: DiT 部分的滑动窗口步长。实验性功能，效果不稳定。
+            #tea_cache_l1_thresh: TeaCache 的阈值，数值越大，速度越快，画面质量越差。
+            #tea_cache_model_id: TeaCache 的参数模板，可选 "Wan2.1-T2V-1.3B"、Wan2.1-T2V-14B、Wan2.1-I2V-14B-480P、Wan2.1-I2V-14B-720P 之一。
             self._update_progress(task_id, 80, "正在保存视频...")
             
             # 保存视频
