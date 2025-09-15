@@ -1,0 +1,24 @@
+{
+  "id": "video_1757853621530_iuwbdih2y",
+  "status": "completed",
+  "type": "image_to_video",
+  "progress": 100,
+  "prompt": "一只小猫",
+  "created_at": "2025-09-14T12:40:21.620Z",
+  "updated_at": "2025-09-14T12:50:21.784Z",
+  "result": {
+    "videos": [
+      {
+        "id": "vid_video_1757853621530_iuwbdih2y",
+        "url": "/outputs/videos/video_20250914_204109_video_1757853621530_iuwbdih2y.mp4",
+        "thumbnail_url": "/outputs/videos/video_20250914_204109_video_1757853621530_iuwbdih2y_thumb.jpg",
+        "fps": 24,
+        "width": 640,
+        "height": 480,
+        "motion_prompt": "一只小猫",
+        "file_size": 0,
+        "created_at": "2025-09-14T12:50:21.784Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,126 @@
+{
+    "video_1756187703117_fcb7bw4kk": {
+      "id": "video_1756187703117_fcb7bw4kk",
+      "status": "completed",
+      "type": "image_to_video",
+      "progress": 100,
+      "prompt": "一个女孩",
+      "created_at": "2025-08-26T05:55:03.224Z",
+      "updated_at": "2025-08-26T06:06:33.661Z",
+      "result": {
+        "videos": [
+          {
+            "id": "vid_video_1756187703117_fcb7bw4kk",
+            "url": "/outputs/videos/video_20250826_135559_video_1756187703117_fcb7bw4kk.mp4",
+            "thumbnail_url": "/outputs/videos/video_20250826_135559_video_1756187703117_fcb7bw4kk_thumb.jpg",
+            "duration": 3,
+            "fps": 24,
+            "width": 640,
+            "height": 480,
+            "motion_prompt": "一个女孩",
+            "file_size": 0,
+            "created_at": "2025-08-26T06:06:33.662Z"
+          }
+        ]
+      }
+    },
+    "video_1756191442236_pskfzzfgn": {
+      "id": "video_1756191442236_pskfzzfgn",
+      "status": "completed",
+      "type": "image_to_video",
+      "progress": 100,
+      "prompt": "A beautiful girl wearing exquisite traditional Chinese clothing dancing gracefully. The attire features rich gold embroidery with intricate patterns on the sleeves and bodice. She wears red shoes that shimmer under the light, complementing her elegant movements. Soft lighting highlights her expressive face and the flowing fabric of her dress. The composition focuses on her full figure, capturing the fluidity and elegance of her dance. High resolution images are required to capture the detailed textures and vibrant colors.",
+      "created_at": "2025-08-26T06:57:22.301Z",
+      "updated_at": "2025-08-26T07:08:52.579Z",
+      "result": {
+        "videos": [
+          {
+            "id": "vid_video_1756191442236_pskfzzfgn",
+            "url": "/outputs/videos/video_20250826_145831_video_1756191442236_pskfzzfgn.mp4",
+            "thumbnail_url": "/outputs/videos/video_20250826_145831_video_1756191442236_pskfzzfgn_thumb.jpg",
+            "duration": 4,
+            "fps": 24,
+            "width": 640,
+            "height": 480,
+            "motion_prompt": "A beautiful girl wearing exquisite traditional Chinese clothing dancing gracefully. The attire features rich gold embroidery with intricate patterns on the sleeves and bodice. She wears red shoes that shimmer under the light, complementing her elegant movements. Soft lighting highlights her expressive face and the flowing fabric of her dress. The composition focuses on her full figure, capturing the fluidity and elegance of her dance. High resolution images are required to capture the detailed textures and vibrant colors.",
+            "file_size": 0,
+            "created_at": "2025-08-26T07:08:52.579Z"
+          }
+        ]
+      }
+    },
+    "video_1756198128284_ha324amgr": {
+      "id": "video_1756198128284_ha324amgr",
+      "status": "completed",
+      "type": "image_to_video",
+      "progress": 100,
+      "prompt": "A young woman dancing, vibrant red hair, wearing a flowing white dress with intricate floral patterns, delicate lace sleeves, and sheer skirt, with soft golden highlights in the sunlight casting gentle shadows on her face and dress. The background is blurred to emphasize her movement, featuring a mix of warm earthy tones and cool blue hues, creating an ethereal atmosphere. High resolution, detailed rendering, cinematic lighting, shallow depth of field, smooth texture, dynamic composition.",
+      "created_at": "2025-08-26T08:48:48.402Z",
+      "updated_at": "2025-08-26T09:00:18.546Z",
+      "result": {
+        "videos": [
+          {
+            "id": "vid_video_1756198128284_ha324amgr",
+            "url": "/outputs/videos/video_20250826_164949_video_1756198128284_ha324amgr.mp4",
+            "thumbnail_url": "/outputs/videos/video_20250826_164949_video_1756198128284_ha324amgr_thumb.jpg",
+            "duration": 4,
+            "fps": 12,
+            "width": 640,
+            "height": 480,
+            "motion_prompt": "A young woman dancing, vibrant red hair, wearing a flowing white dress with intricate floral patterns, delicate lace sleeves, and sheer skirt, with soft golden highlights in the sunlight casting gentle shadows on her face and dress. The background is blurred to emphasize her movement, featuring a mix of warm earthy tones and cool blue hues, creating an ethereal atmosphere. High resolution, detailed rendering, cinematic lighting, shallow depth of field, smooth texture, dynamic composition.",
+            "file_size": 0,
+            "created_at": "2025-08-26T09:00:18.546Z"
+          }
+        ]
+      }
+    },
+    "video_1756200522739_rmh2rlhj6": {
+      "id": "video_1756200522739_rmh2rlhj6",
+      "status": "completed",
+      "type": "image_to_video",
+      "progress": 100,
+      "prompt": "A young woman dancing, vibrant red hair, wearing a flowing white dress with intricate floral patterns, delicate lace sleeves, and sheer skirt, with soft golden highlights in the sunlight casting gentle shadows on her face and dress. The background is blurred to emphasize her movement, featuring a mix of warm earthy tones and cool blue hues, creating an ethereal atmosphere. High resolution, detailed rendering, cinematic lighting, shallow depth of field, smooth texture, dynamic composition.",
+      "created_at": "2025-08-26T09:28:43.560Z",
+      "updated_at": "2025-08-26T09:35:43.592Z",
+      "result": {
+        "videos": [
+          {
+            "id": "vid_video_1756200522739_rmh2rlhj6",
+            "url": "/outputs/videos/video_20250826_172937_video_1756200522739_rmh2rlhj6.mp4",
+            "thumbnail_url": "/outputs/videos/video_20250826_172937_video_1756200522739_rmh2rlhj6_thumb.jpg",
+            "duration": 4,
+            "fps": 12,
+            "width": 640,
+            "height": 480,
+            "motion_prompt": "A young woman dancing, vibrant red hair, wearing a flowing white dress with intricate floral patterns, delicate lace sleeves, and sheer skirt, with soft golden highlights in the sunlight casting gentle shadows on her face and dress. The background is blurred to emphasize her movement, featuring a mix of warm earthy tones and cool blue hues, creating an ethereal atmosphere. High resolution, detailed rendering, cinematic lighting, shallow depth of field, smooth texture, dynamic composition.",
+            "file_size": 0,
+            "created_at": "2025-08-26T09:35:43.592Z"
+          }
+        ]
+      }
+    },
+    "video_1756266970311_gcskekdub": {
+      "id": "video_1756266970311_gcskekdub",
+      "status": "completed",
+      "type": "image_to_video",
+      "progress": 100,
+      "prompt": "穿着中国民族传统服饰的美女,在和木门后面露出头,然后歪头温柔的笑了,眼睛眯起来像晚晚的月亮",
+      "created_at": "2025-08-27T03:56:10.406Z",
+      "updated_at": "2025-08-27T04:02:10.563Z",
+      "result": {
+        "videos": [
+          {
+            "id": "vid_video_1756266970311_gcskekdub",
+            "url": "/outputs/videos/video_20250827_115655_video_1756266970311_gcskekdub.mp4",
+            "thumbnail_url": "/outputs/videos/video_20250827_115655_video_1756266970311_gcskekdub_thumb.jpg",
+            "fps": 12,
+            "width": 640,
+            "height": 480,
+            "motion_prompt": "穿着中国民族传统服饰的美女,在和木门后面露出头,然后歪头温柔的笑了,眼睛眯起来像晚晚的月亮",
+            "file_size": 0,
+            "created_at": "2025-08-27T04:02:10.563Z"
+          }
+        ]
+      }
+    }
+  }

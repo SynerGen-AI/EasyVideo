@@ -47,7 +47,7 @@ const defaultSettings: GenerationSettings = {
   cfg_scale: 7.5,
   seed: -1,
   batch_size: 1,
-  negative_prompt: "static, blurry, low quality",
+  negative_prompt: 'worst quality, normal quality, low quality, low res, blurry, distortion, text, watermark, logo, banner, extra digits, cropped, jpeg artifacts, signature, username, error, sketch, duplicate, ugly, monochrome, horror, geometry, mutation, disgusting, bad anatomy, bad proportions, bad quality, deformed, disconnected limbs, out of frame, out of focus, dehydrated, disfigured, extra arms, extra limbs, extra hands, fused fingers, gross proportions, long neck, jpeg, malformed limbs, mutated, mutated hands, mutated limbs, missing arms, missing fingers, picture frame, poorly drawn hands, poorly drawn face, collage, pixel, pixelated, grainy, color aberration, amputee, autograph, bad illustration, beyond the borders, blank background, body out of frame, boring background, branding, cut off, dismembered, disproportioned, distorted, draft, duplicated features, extra fingers, extra legs, fault, flaw, grains, hazy, identifying mark, improper scale, incorrect physiology, incorrect ratio, indistinct, kitsch, low resolution, macabre, malformed, mark, misshapen, missing hands, missing legs, mistake, morbid, mutilated, off-screen, outside the picture, poorly drawn feet, printed words, render, repellent, replicate, reproduce, revolting dimensions, script, shortened, sign, split image, squint, storyboard, tiling, trimmed, unfocused, unattractive, unnatural pose, unreal engine, unsightly, written language',
 };
 
 const presetSizes = [
@@ -61,74 +61,6 @@ const showSettings = true;
 const TextToImagePage: React.FC = () => {
   const [prompt, setPrompt] = useState('');
   const [settings, setSettings] = useState<GenerationSettings>(defaultSettings);
-  //网页加载时读缓存
-  useEffect(() => {
-    const savedPrompt = localStorage.getItem('textToImagePrompt');
-    if (savedPrompt) {
-      setPrompt(savedPrompt);
-    }
-    const savedNegPrompt = localStorage.getItem('NegativePrompt');
-    if (savedNegPrompt) {
-      setSettings(prev => ({...prev, negative_prompt: savedNegPrompt}));
-    }
-    const savedSize = localStorage.getItem('selectedSize');
-    if (savedSize)
-    { 
-      const SizeValue = JSON.parse(savedSize);
-      if(SizeValue.width && SizeValue.height)
-      {
-        setSettings(prev => ({...prev, ...SizeValue }));
-      }
-    }
-    const savedCFGScale = localStorage.getItem('CFGScale');
-    if (savedCFGScale && savedCFGScale!=='null') {
-      setSettings(prev => ({...prev, cfg_scale: parseFloat(savedCFGScale) }));
-    }
-    const savedStep = localStorage.getItem('Step');
-    if (savedStep && savedStep!=='null') {
-      setSettings(prev => ({...prev, steps: parseInt(savedStep) }));
-    }
-    const savedSeed = localStorage.getItem('Seed');
-    if (savedSeed && savedSeed!=='null') {
-      setSettings(prev => ({...prev, seed: parseInt(savedSeed) }));
-    }
-    const savedBatchSize = localStorage.getItem('BatchSize');
-    if (savedBatchSize) {
-      setSettings(prev => ({...prev, batch_size: parseInt(savedBatchSize) }));
-    }
-
-  }, []);
-  //输入框内容变化时写缓存
-  const onChange_Prompt = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setPrompt(e.target.value);
-    localStorage.setItem('textToImagePrompt', e.target.value);
-  };
-  const onChange_Size = (w: number, h: number) => {
-    setSettings(prev => ({...prev, width: w, height: h }));
-    localStorage.setItem('selectedSize', JSON.stringify({ width: w, height: h }));
-  }
-  const onChange_Neg = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setSettings(prev => ({...prev, negative_prompt: e.target.value}));
-    localStorage.setItem('NegativePrompt', e.target.value);
-  };
-  const onChange_CfgScale = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSettings(prev => ({...prev, cfg_scale: parseFloat(e.target.value)}));
-    localStorage.setItem('CFGScale', e.target.value);
-  }
-  const onChange_Step = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSettings(prev => ({...prev, steps: parseInt(e.target.value)}));
-    localStorage.setItem('Step', e.target.value);
-  }
-  const onChange_Seed = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSettings(prev => ({...prev, seed: parseInt(e.target.value)}));
-    localStorage.setItem('Seed', e.target.value);
-  }
-  const onChange_BatchSize = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSettings(prev => ({...prev, batch_size: parseInt(e.target.value)}));
-    localStorage.setItem('BatchSize', e.target.value);
-  }
-
-
   const [generating, setGenerating] = useState(false);
   const [optimizingPrompt, setOptimizingPrompt] = useState(false);
   // const [showSettings, setShowSettings] = useState(false);
@@ -139,8 +71,8 @@ const TextToImagePage: React.FC = () => {
   const [selectedImages, setSelectedImages] = useState<Set<string>>(new Set());
   const [progress, setProgress] = useState(0);
   const [progressStatus, setProgressStatus] = useState('');
-    const progressCleanupRef = useRef<(() => void) | null>(null);
-const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const progressCleanupRef = useRef<(() => void) | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   // 清理进度监听
   useEffect(() => {
@@ -398,7 +330,7 @@ const [previewUrl, setPreviewUrl] = useState<string | null>(null);
             <div className="flex space-x-2">
               <textarea
                 value={prompt}
-                onChange={onChange_Prompt}
+                onChange={(e) => setPrompt(e.target.value)}
                 placeholder="描述您想要生成的图像，例如：一只可爱的小猫坐在花园里，阳光明媚，高质量，8K分辨率"
                 className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
                 rows={3}
@@ -435,8 +367,7 @@ const [previewUrl, setPreviewUrl] = useState<string | null>(null);
                     {presetSizes.map((preset) => (
                       <button
                         key={preset.label}
-                        // onClick={() => setSettings(prev => ({ ...prev, width: preset.width, height: preset.height }))}
-                        onClick={() => {onChange_Size(preset.width, preset.height)}}
+                        onClick={() => setSettings(prev => ({ ...prev, width: preset.width, height: preset.height }))}
                         className={`px-3 py-2 text-sm rounded-lg transition-colors ${
                           settings.width === preset.width && settings.height === preset.height
                             ? 'bg-primary-600 text-white'
@@ -461,8 +392,7 @@ const [previewUrl, setPreviewUrl] = useState<string | null>(null);
                       max="1024"
                       step="64"
                       value={settings.width}
-                      // onChange={(e) => setSettings(prev => ({ ...prev, width: parseInt(e.target.value) }))}
-                      onChange={(e) => onChange_Size(parseInt(e.target.value), settings.height)}
+                      onChange={(e) => setSettings(prev => ({ ...prev, width: parseInt(e.target.value) }))}
                       className="w-20 px-2 py-1 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm"
                     />
                     <span className="text-gray-500 dark:text-gray-400">×</span>
@@ -472,8 +402,7 @@ const [previewUrl, setPreviewUrl] = useState<string | null>(null);
                       max="1024"
                       step="64"
                       value={settings.height}
-                      // onChange={(e) => setSettings(prev => ({ ...prev, height: parseInt(e.target.value) }))}
-                      onChange={(e) => onChange_Size(settings.width, parseInt(e.target.value))}
+                      onChange={(e) => setSettings(prev => ({ ...prev, height: parseInt(e.target.value) }))}
                       className="w-20 px-2 py-1 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm"
                     />
                   </div>
@@ -489,7 +418,7 @@ const [previewUrl, setPreviewUrl] = useState<string | null>(null);
                     min="10"
                     max="50"
                     value={settings.steps}
-                    onChange={onChange_Step}
+                    onChange={(e) => setSettings(prev => ({ ...prev, steps: parseInt(e.target.value) }))}
                     className="w-full"
                   />
                 </div>
@@ -505,8 +434,7 @@ const [previewUrl, setPreviewUrl] = useState<string | null>(null);
                     max="20"
                     step="0.5"
                     value={settings.cfg_scale}
-                    // onChange={(e) => setSettings(prev => ({ ...prev, cfg_scale: parseFloat(e.target.value) }))}
-                    onChange={onChange_CfgScale}
+                    onChange={(e) => setSettings(prev => ({ ...prev, cfg_scale: parseFloat(e.target.value) }))}
                     className="w-full"
                   />
                 </div>
@@ -518,7 +446,7 @@ const [previewUrl, setPreviewUrl] = useState<string | null>(null);
                   </label>
                   <select
                     value={settings.batch_size}
-                    onChange={onChange_BatchSize}
+                    onChange={(e) => setSettings(prev => ({ ...prev, batch_size: parseInt(e.target.value) }))}
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                   >
                     <option value={1}>1张</option>
@@ -536,7 +464,7 @@ const [previewUrl, setPreviewUrl] = useState<string | null>(null);
                   <input
                     type="number"
                     value={settings.seed}
-                    onChange={onChange_Seed}
+                    onChange={(e) => setSettings(prev => ({ ...prev, seed: parseInt(e.target.value) }))}
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                   />
                 </div>
@@ -549,9 +477,8 @@ const [previewUrl, setPreviewUrl] = useState<string | null>(null);
                 </label>
                 <textarea
                   value={settings.negative_prompt}
-                  // onChange={(e) => setSettings(prev => ({ ...prev, negative_prompt: e.target.value }))}
-                  onChange={onChange_Neg}
-                  placeholder="描述您不希望在图像中出现的内容，例如：低质量，模糊，变形"
+                  placeholder = "worst quality, normal quality, low quality, low res, blurry, distortion, text, watermark, logo, banner, extra digits, cropped, jpeg artifacts, signature, username, error, sketch, duplicate, ugly, monochrome, horror, geometry, mutation, disgusting, bad anatomy, bad proportions, bad quality, deformed, disconnected limbs, out of frame, out of focus, dehydrated, disfigured, extra arms, extra limbs, extra hands, fused fingers, gross proportions, long neck, jpeg, malformed limbs, mutated, mutated hands, mutated limbs, missing arms, missing fingers, picture frame, poorly drawn hands, poorly drawn face, collage, pixel, pixelated, grainy, color aberration, amputee, autograph, bad illustration, beyond the borders, blank background, body out of frame, boring background, branding, cut off, dismembered, disproportioned, distorted, draft, duplicated features, extra fingers, extra legs, fault, flaw, grains, hazy, identifying mark, improper scale, incorrect physiology, incorrect ratio, indistinct, kitsch, low resolution, macabre, malformed, mark, misshapen, missing hands, missing legs, mistake, morbid, mutilated, off-screen, outside the picture, poorly drawn feet, printed words, render, repellent, replicate, reproduce, revolting dimensions, script, shortened, sign, split image, squint, storyboard, tiling, trimmed, unfocused, unattractive, unnatural pose, unreal engine, unsightly, written language"
+                  onChange={(e) => setSettings(prev => ({ ...prev, negative_prompt: e.target.value }))}
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
                   rows={2}
                 />
@@ -696,7 +623,6 @@ const [previewUrl, setPreviewUrl] = useState<string | null>(null);
                     src={getFullImageUrl(image.url)}
                     alt={image.prompt}
                     className="w-full h-full object-cover"
-                    onClick={() => handlePreviewImage(image)}
                   />
                   
                   {/* Selection Checkbox */}
@@ -775,10 +701,11 @@ const [previewUrl, setPreviewUrl] = useState<string | null>(null);
             ))}
           </div>
         </div>
-          )}
-          <ImagePreviewer url={previewUrl} onClose={() => setPreviewUrl(null)} />
+      )}
+      <ImagePreviewer url={previewUrl} onClose={() => setPreviewUrl(null)} />
     </div>
   );
 };
 
 export default TextToImagePage;
+

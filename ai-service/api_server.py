@@ -15,14 +15,10 @@ from pathlib import Path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'modules'))
 
 # Import AI modules
-try:
-    from modules.prompt_optimizer import PromptOptimizer
-    from modules.image_generator import ImageGenerator
-    from modules.video_generator import VideoGenerator
-    from modules.storyboard_generator import StoryboardGenerator
-except ImportError as e:
-    print(f"Warning: Could not import AI modules: {e}")
-    print("AI service will run in mock mode")
+from modules.prompt_optimizer import PromptOptimizer
+from modules.image_generator import ImageGenerator
+from modules.video_generator import VideoGenerator
+from modules.storyboard_generator import StoryboardGenerator
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -65,15 +61,15 @@ class ImageGenerateRequest(BaseModel):
     task_id: str
 
 class ImageGenerateResponse(BaseModel):
-    images: List[str]
+    image_path: str
     task_id: str
 
 class VideoGenerateRequest(BaseModel):
     image_path: str
-    prompt: Optional[str] = ""
+    prompt: str = ""
     negative_prompt: Optional[str] = "static, blurry, low quality"
-    fps: int = 15
-    duration: int = 4
+    fps: int = 16
+    num_frames : int = 81
     seed: Optional[int] = None
     tiled: bool = True
     num_inference_steps: int = 20
@@ -87,9 +83,14 @@ class VideoGenerateResponse(BaseModel):
     task_id: str
 
 class StoryboardGenerateRequest(BaseModel):
-    story_description: str
-    num_scenes: int = 5
-    style: str = "现代风格"
+    script: str
+    scene_count: int
+    style: str # actually 'cinematic' | 'documentary' | 'commercial' | 'artistic'
+    duration: int
+    include_camera_movements: bool
+    include_lighting_notes: bool
+    include_audio_cues: bool
+    task_id : str
 
 class StoryboardScene(BaseModel):
     scene_number: int
@@ -201,25 +202,6 @@ async def optimize_prompt(request: PromptOptimizeRequest):
             except Exception as e:
                 logger.warning(f"Failed to unload PromptOptimizer model: {e}")
 
-async def generate_image_new(request: ImageGenerateRequest):
-    try:
-        # Initialize task progress
-        task_progress[request.task_id] = {"progress": 0, "status": "starting"}
-        
-        # 立即返回任务ID，不等待生成器初始化
-        logger.info(f"Image generation task queued for task_id: {request.task_id}")
-        
-        # 在后台异步初始化和执行视频生成
-        asyncio.create_task(initialize_and_generate_Image(request))
-        
-        return ImageGenerateResponse(
-            Image_path="",  # Will be updated when generation completes
-            task_id=request.task_id
-        )
-    except Exception as e:
-        logger.error(f"Error queuing Image generation: {e}")
-        task_progress[request.task_id] = {"progress": 0, "status": "failed", "error": str(e)}
-        raise HTTPException(status_code=500, detail=f"视频生成队列失败: {str(e)}") 
 
 async def initialize_and_generate_Image(request: ImageGenerateRequest):
     """完全异步的图片生成初始化和执行"""
@@ -323,7 +305,7 @@ async def generate_image(request: ImageGenerateRequest):
         asyncio.create_task(cleanup_task_progress(request.task_id, delay=60))
         
         return ImageGenerateResponse(
-            images=images,
+            image_path="",
             task_id=request.task_id
         )
     except Exception as e:
@@ -339,6 +321,93 @@ async def generate_image(request: ImageGenerateRequest):
         if generator and hasattr(generator, 'unload_model'):
             try:
                 generator.unload_model()
+                logger.info("ImageGenerator model unloaded successfully")
+            except Exception as e:
+                logger.warning(f"Failed to unload ImageGenerator model: {e}")
+
+@app.post("/image/generate", response_model=VideoGenerateResponse)
+async def generate_image(request: ImageGenerateRequest):
+    try:
+        # Initialize task progress
+        task_progress[request.task_id] = {"progress": 0, "status": "starting"}
+        
+        # 立即返回任务ID，不等待生成器初始化
+        logger.info(f"Image generation task queued for task_id: {request.task_id}")
+        
+        # 在后台异步初始化和执行视频生成
+        asyncio.create_task(initialize_and_generate_image(request))
+        
+        return VideoGenerateResponse(
+            video_path="",  # Will be updated when generation completes
+            task_id=request.task_id
+        )
+    except Exception as e:
+        logger.error(f"Error queuing video generation: {e}")
+        task_progress[request.task_id] = {"progress": 0, "status": "failed", "error": str(e)}
+        raise HTTPException(status_code=500, detail=f"视频生成队列失败: {str(e)}")
+
+async def initialize_and_generate_image(request: ImageGenerateRequest):
+    """完全异步的视频生成初始化和执行"""
+    generator = None
+    try:
+        # 更新状态为初始化中
+        task_progress[request.task_id] = {"progress": 5, "status": "initializing"}
+        
+        # 异步初始化生成器
+        generator = await asyncio.get_event_loop().run_in_executor(
+            None, get_image_generator
+        )
+        
+        # 设置进度回调
+        # def progress_callback(progress: int, status: str = "processing"):
+        #     task_progress[request.task_id] = {"progress": progress, "status": status}
+        
+        # generator.set_progress_callback(request.task_id, progress_callback)
+
+        # 更新状态为生成中
+        task_progress[request.task_id] = {"progress": 10, "status": "processing"}
+        
+        # 异步执行视频生成
+        image_path = await asyncio.get_event_loop().run_in_executor(
+            None,
+            lambda: asyncio.run(generator.generate(
+                prompt=request.prompt,
+                negative_prompt=request.negative_prompt,
+                width=request.width,
+                height=request.height,
+                seed=request.seed,
+                num_images=request.num_images,
+                output_dir=request.output_dir,
+                task_id=request.task_id
+            ))
+        )
+        
+        # Mark as completed and store video path
+        task_progress[request.task_id] = {
+            "progress": 100, 
+            "status": "completed",
+            "image_path": image_path
+        }
+        
+        logger.info(f"Image generation completed for task_id: {request.task_id}")
+        
+        # Clean up task progress after a delay
+        asyncio.create_task(cleanup_task_progress(request.task_id, delay=300))  # 5分钟后清理
+        
+    except Exception as e:
+        logger.error(f"Error in image generation pipeline: {e}")
+        task_progress[request.task_id] = {"progress": 0, "status": "failed", "error": str(e)}
+        
+        # Clean up task progress after a delay
+        asyncio.create_task(cleanup_task_progress(request.task_id, delay=60))
+    finally:
+        # 确保模型卸载
+        if generator and hasattr(generator, 'unload_model'):
+            try:
+                # 异步卸载模型
+                await asyncio.get_event_loop().run_in_executor(
+                    None, generator.unload_model
+                )
                 logger.info("ImageGenerator model unloaded successfully")
             except Exception as e:
                 logger.warning(f"Failed to unload ImageGenerator model: {e}")
@@ -393,7 +462,7 @@ async def initialize_and_generate_video(request: VideoGenerateRequest):
                 prompt=request.prompt,
                 negative_prompt=request.negative_prompt,
                 fps=request.fps,
-                duration=request.duration,
+                num_frames=request.num_frames,
                 seed=request.seed,
                 tiled=request.tiled,
                 num_inference_steps=request.num_inference_steps,
@@ -467,36 +536,36 @@ async def stream_task_progress(task_id: str):
         headers={"Cache-Control": "no-cache", "Connection": "keep-alive"}
     )
 
-@app.post("/storyboard/generate", response_model=StoryboardGenerateResponse)
-async def generate_storyboard(request: StoryboardGenerateRequest):
-    try:
-        # Initialize task progress
-        task_progress[request.task_id] = {"progress": 0, "status": "starting"}
+# @app.post("/storyboard/generate", response_model=StoryboardGenerateResponse)
+# async def generate_storyboard(request: StoryboardGenerateRequest):
+#     try:
+#         # Initialize task progress
+#         task_progress[request.task_id] = {"progress": 0, "status": "starting"}
         
-        generator = get_storyboard_generator()
-        # Update progress callback
-        def progress_callback(progress: int, status: str = "processing"):
-            task_progress[request.task_id] = {"progress": progress, "status": status}
+#         generator = get_storyboard_generator()
+#         # Update progress callback
+#         def progress_callback(progress: int, status: str = "processing"):
+#             task_progress[request.task_id] = {"progress": progress, "status": status}
         
-        storyboard = await generator.generate(
-            script=request.script,
-            style=request.style,
-            output_dir=request.output_dir,
-            task_id=request.task_id,
-            progress_callback=progress_callback
-        )
+#         storyboard = await generator.generate(
+#             script=request.script,
+#             style=request.style,
+#             output_dir=request.output_dir,
+#             task_id=request.task_id,
+#             progress_callback=progress_callback
+#         )
         
-        # Mark as completed
-        task_progress[request.task_id] = {"progress": 100, "status": "completed"}
+#         # Mark as completed
+#         task_progress[request.task_id] = {"progress": 100, "status": "completed"}
         
-        return StoryboardGenerateResponse(
-            storyboard=storyboard,
-            task_id=request.task_id
-        )
-    except Exception as e:
-        logger.error(f"Error generating storyboard: {e}")
-        task_progress[request.task_id] = {"progress": 0, "status": "failed", "error": str(e)}
-        raise HTTPException(status_code=500, detail=str(e))
+#         return StoryboardGenerateResponse(
+#             storyboard=storyboard,
+#             task_id=request.task_id
+#         )
+#     except Exception as e:
+#         logger.error(f"Error generating storyboard: {e}")
+#         task_progress[request.task_id] = {"progress": 0, "status": "failed", "error": str(e)}
+#         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
     port = int(os.getenv("AI_SERVICE_PORT", 8000))

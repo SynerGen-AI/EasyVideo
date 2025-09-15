@@ -8,12 +8,14 @@ import type {
   PromptOptimizationResponse,
   StoryboardRequest,
   StoryboardResponse,
+  GeneratedVideo,
   GenerationTask,
   BatchGenerationRequest,
   BatchGenerationResponse,
   GenerationHistory,
   GenerationStats
 } from '@/types';
+
 
 export class GenerationService {
   // 文生图
@@ -231,6 +233,8 @@ export class GenerationService {
   static async downloadResult(id: string, filename?: string, onProgress?: (progress: number) => void): Promise<Blob> {
     return await this.downloadGenerationResult(id, 'image', filename, onProgress);
   }
+
+
 
   // 下载生成结果
   static async downloadGenerationResult(

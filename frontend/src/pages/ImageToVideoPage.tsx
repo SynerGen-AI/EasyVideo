@@ -55,58 +55,27 @@ const presetDurations = [
 const showSettings = true;
 
 const exampleVideo: GeneratedVideo = {
-  id: "video_001",
-  url: "/outputs/videos/video_20250823_153004_video_1755934153715_4eapnf9er.mp4",
-  thumbnail_url: "/images/test.jpg",
-  filename: "FLFKJ_00021.mp4",
-  duration: 12.5,      // 秒
-  fps: 30,
-  width: 1920,
-  height: 1080,
-  file_size: 25_000_000, // 字节
-  source_image_url: "/home/rogers/Documents/project/EasyVideo/test.jpg",
-  motion_prompt: "A cat walking in a park, sunny day",
-  seed: 12345,
-  created_at: "2025-08-20T17:00:00Z",
-  metadata: {
-    model: "StableMotion-v1",
-    motion_strength: 0.8,
-    guidance_scale: 7.5,
-    steps: 50,
-  },
+  id: "vid_video_1756191442236_pskfzzfgn",
+  url: "/outputs/videos/video_20250826_145831_video_1756191442236_pskfzzfgn.mp4",
+  thumbnail_url: "/outputs/videos/video_20250826_145831_video_1756191442236_pskfzzfgn_thumb.jpg",
+  duration: 4,
+  fps: 24,
+  width: 640,
+  height: 480,
+  motion_prompt: "A beautiful girl wearing exquisite traditional Chinese clothing dancing gracefully. The attire features rich gold embroidery with intricate patterns on the sleeves and bodice. She wears red shoes that shimmer under the light, complementing her elegant movements. Soft lighting highlights her expressive face and the flowing fabric of her dress. The composition focuses on her full figure, capturing the fluidity and elegance of her dance. High resolution images are required to capture the detailed textures and vibrant colors.",
+  file_size: 0,
+  created_at: "2025-08-26T07:08:52.579Z"
 };
 
 const ImageToVideoPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
-
   const [motionPrompt, setMotionPrompt] = useState('');
   const [settings, setSettings] = useState<VideoSettings>(defaultSettings);
-  //网页加载时读缓存
-  useEffect(() => {
-    const savedMotionPrompt = localStorage.getItem('MotionPrompt');
-    if (savedMotionPrompt) {
-      setMotionPrompt(savedMotionPrompt);
-    }
-    const savedNegativePrompt = localStorage.getItem('NegativePrompt');
-    if (savedNegativePrompt) {
-      setSettings(prev => ({...prev, negative_prompt: savedNegativePrompt}));
-    }
-  }, []);
-  //输入框内容变化时写缓存
-  const onChange_Pos = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setMotionPrompt(e.target.value);
-    localStorage.setItem('MotionPrompt', e.target.value);
-  };
-  const onChange_Neg = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setSettings(prev => ({...prev, negative_prompt: e.target.value}));
-    localStorage.setItem('NegativePrompt', e.target.value);
-  };
-
   const [generating, setGenerating] = useState(false);
   // const [showSettings, setShowSettings] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [generatedVideos, setGeneratedVideos] = useState<GeneratedVideo[]>([exampleVideo]);
+  const [generatedVideos, setGeneratedVideos] = useState<GeneratedVideo[]>([]);
   const [currentTask, setCurrentTask] = useState<GenerationTask | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedVideos, setSelectedVideos] = useState<Set<string>>(new Set());
@@ -115,7 +84,51 @@ const ImageToVideoPage: React.FC = () => {
   const dragRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const pollTimeoutRef = useRef<number | null>(null);
-
+  
+  interface TaskResult {
+    videos: GeneratedVideo[];
+  }
+  
+  interface Task {
+    id: string;
+    status: string;
+    type: string;
+    progress: number;
+    prompt: string;
+    created_at: string;
+    updated_at: string;
+    result: TaskResult;
+  }
+  
+  interface ApiResponse {
+    data: Record<string, Task>;
+  }
+  
+  
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const response = await fetch('/api/generation/storage/video');
+        if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+  
+        // 获取 JSON 对象
+        const json: ApiResponse = await response.json();
+  
+        // 取 data 部分，并拍平成 GeneratedVideo[]
+        const allVideos: GeneratedVideo[] = Object.values(json.data)
+          .flatMap(task => task.result.videos);
+  
+        setGeneratedVideos(allVideos);
+      } catch (err) {
+        console.error(err instanceof Error ? err.message : '未知错误');
+        setGeneratedVideos([]);
+      }
+    };
+  
+    fetchVideos();
+    console.log('generatedVideos', generatedVideos);
+  }, []);  
+  
   // 清理定时器
   useEffect(() => {
     return () => {
@@ -189,7 +202,7 @@ const ImageToVideoPage: React.FC = () => {
       const request: ImageToVideoRequest = {
         image_path: uploadResponse.image_path,
         motion_prompt: motionPrompt.trim() || '',
-        duration: settings.duration,
+        num_frames: Math.ceil(settings.duration * settings.fps) + 1,
         fps: settings.fps,
         motion_strength: settings.motion_strength,
         seed: settings.seed === -1 ? undefined : settings.seed,
@@ -518,7 +531,7 @@ const ImageToVideoPage: React.FC = () => {
             </span>
             <textarea
               value={motionPrompt}
-              onChange={onChange_Pos}
+              onChange={(e) => setMotionPrompt(e.target.value)}
               // placeholder="描述您希望图像中的运动效果，例如：轻柔的风吹动头发，水面波纹荡漾，云朵缓慢飘动"
               className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
               rows={3}
@@ -642,8 +655,7 @@ const ImageToVideoPage: React.FC = () => {
                   </label>
                   <textarea
                     value={settings.negative_prompt}
-                    // onChange={(e) => setSettings(prev => ({ ...prev, negative_prompt: e.target.value }))}
-                    onChange={onChange_Neg}
+                    onChange={(e) => setSettings(prev => ({ ...prev, negative_prompt: e.target.value }))}
                     placeholder="描述不希望出现在视频中的内容..."
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white resize-none"
                     rows={2}
@@ -871,5 +883,4 @@ const ImageToVideoPage: React.FC = () => {
     </div>
   );
 };
-
 export default ImageToVideoPage;

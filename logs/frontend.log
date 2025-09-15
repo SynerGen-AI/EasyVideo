@@ -8,552 +8,35 @@
   > Local:    http://localhost:5173/
   > Network:  http://172.17.0.7:5173/
 
-  ready in 333ms.
+  ready in 4775ms.
 
-3:38:10 PM [vite] hmr update /src/index.css
-3:38:12 PM [vite] 
-3:38:27 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:39:19 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:39:23 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:39:27 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:39:30 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:40:20 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:40:22 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:41:05 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:46:44 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:46:49 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:46:52 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:47:22 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:48:07 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:48:08 PM [vite] Internal server error: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (305:16)
+/root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx: Unexpected token (1:1)
 
-  303 |                     </div>
-  304 |                   </div>
-> 305 |                 </div>
-      |                 ^
-  306 |   const filteredImages = generatedImages.filter(image =>
-  307 |     searchQuery === '' || 
-  308 |     image.prompt.toLowerCase().includes(searchQuery.toLowerCase())
+> 1 | <<<<<<< HEAD
+    |  ^
+  2 | import React, { useState, useEffect, useRef } from 'react';
+  3 | import {
+  4 |   Image,
+/root/autodl-tmp/EasyVideo/frontend/src/pages/ImageToVideoPage.tsx: Unexpected token (1:1)
+
+> 1 | <<<<<<< HEAD
+    |  ^
+  2 | import React, { useState, useRef, useCallback, useEffect } from 'react';
+  3 | import {
+  4 |   Video,
+8:17:54 PM [vite] Internal server error: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx: Unexpected token (1:1)
+
+> 1 | <<<<<<< HEAD
+    |  ^
+  2 | import React, { useState, useEffect, useRef } from 'react';
+  3 | import {
+  4 |   Image,
   Plugin: vite:react-babel
   File: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx
-  303|                      </div>
-  304|                    </div>
-  305|                  </div>
-     |                  ^
-  306|    const filteredImages = generatedImages.filter(image =>
-  307|      searchQuery === '' || 
-      at constructor (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:367:19)
-      at TypeScriptParserMixin.raise (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6627:19)
-      at TypeScriptParserMixin.jsxParseElementAt (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4772:18)
-      at TypeScriptParserMixin.jsxParseElement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4779:17)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4792:19)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-      at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9790:39
-      at TypeScriptParserMixin.tryParse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6935:20)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9790:18)
-      at TypeScriptParserMixin.parseExpressionBase (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10779:23)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10775:39
-      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
-      at TypeScriptParserMixin.parseExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10775:17)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12895:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseStatementListItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12747:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:61)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseBlock (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13297:10)
-      at TypeScriptParserMixin.parseFunctionBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12101:24)
-      at TypeScriptParserMixin.parseArrowExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12076:10)
-      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11686:12)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11326:23)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4794:20)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-      at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9801:20)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:39
-      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
-      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:17)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13384:91)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-3:48:09 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:48:12 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:48:17 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:48:17 PM [vite] Internal server error: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx: Missing initializer in const declaration. (280:12)
-
-  278 |   };
-  279 |   
-> 280 |   const hand
-      |             ^
-  281 |     
-  282 |   const filteredImages = generatedImages.filter(image =>
-  283 |     searchQuery === '' || 
-  Plugin: vite:react-babel
-  File: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx
-  278|    };
-  279|    
-  280|    const hand
-     |              ^
-  281|      
-  282|    const filteredImages = generatedImages.filter(image =>
-      at constructor (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:367:19)
-      at TypeScriptParserMixin.raise (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6627:19)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13391:16)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseStatementListItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12747:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:61)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseBlock (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13297:10)
-      at TypeScriptParserMixin.parseFunctionBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12101:24)
-      at TypeScriptParserMixin.parseArrowExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12076:10)
-      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11686:12)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11326:23)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4794:20)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-      at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9801:20)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:39
-      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
-      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:17)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13384:91)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseModuleItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12744:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:36)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseProgram (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12625:10)
-      at TypeScriptParserMixin.parseTopLevel (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12615:25)
-      at TypeScriptParserMixin.parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:14492:10)
-      at TypeScriptParserMixin.parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10144:18)
-      at parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:14526:38)
-      at parser (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
-      at parser.next (<anonymous>)
-      at normalizeFile (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
-      at normalizeFile.next (<anonymous>)
-      at run (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
-      at run.next (<anonymous>)
-      at transform (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transform.js:22:33)
-3:48:18 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:48:18 PM [vite] Internal server error: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx: Missing initializer in const declaration. (280:14)
-
-  278 |   };
-  279 |   
-> 280 |   const handle
-      |               ^
-  281 |     
-  282 |   const filteredImages = generatedImages.filter(image =>
-  283 |     searchQuery === '' || 
-  Plugin: vite:react-babel
-  File: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx
-  278|    };
-  279|    
-  280|    const handle
-     |                ^
-  281|      
-  282|    const filteredImages = generatedImages.filter(image =>
-      at constructor (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:367:19)
-      at TypeScriptParserMixin.raise (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6627:19)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13391:16)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseStatementListItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12747:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:61)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseBlock (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13297:10)
-      at TypeScriptParserMixin.parseFunctionBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12101:24)
-      at TypeScriptParserMixin.parseArrowExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12076:10)
-      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11686:12)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11326:23)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4794:20)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-      at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9801:20)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:39
-      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
-      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:17)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13384:91)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseModuleItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12744:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:36)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseProgram (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12625:10)
-      at TypeScriptParserMixin.parseTopLevel (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12615:25)
-      at TypeScriptParserMixin.parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:14492:10)
-      at TypeScriptParserMixin.parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10144:18)
-      at parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:14526:38)
-      at parser (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
-      at parser.next (<anonymous>)
-      at normalizeFile (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
-      at normalizeFile.next (<anonymous>)
-      at run (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
-      at run.next (<anonymous>)
-      at transform (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transform.js:22:33)
-3:48:22 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:48:22 PM [vite] Internal server error: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx: Missing initializer in const declaration. (280:26)
-
-  278 |   };
-  279 |   
-> 280 |   const handlePreviewImage 
-      |                           ^
-  281 |     
-  282 |   const filteredImages = generatedImages.filter(image =>
-  283 |     searchQuery === '' || 
-  Plugin: vite:react-babel
-  File: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx
-  278|    };
-  279|    
-  280|    const handlePreviewImage 
-     |                            ^
-  281|      
-  282|    const filteredImages = generatedImages.filter(image =>
-      at constructor (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:367:19)
-      at TypeScriptParserMixin.raise (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6627:19)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13391:16)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseStatementListItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12747:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:61)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseBlock (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13297:10)
-      at TypeScriptParserMixin.parseFunctionBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12101:24)
-      at TypeScriptParserMixin.parseArrowExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12076:10)
-      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11686:12)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11326:23)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4794:20)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-      at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9801:20)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:39
-      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
-      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:17)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13384:91)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseModuleItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12744:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:36)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseProgram (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12625:10)
-      at TypeScriptParserMixin.parseTopLevel (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12615:25)
-      at TypeScriptParserMixin.parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:14492:10)
-      at TypeScriptParserMixin.parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10144:18)
-      at parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:14526:38)
-      at parser (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
-      at parser.next (<anonymous>)
-      at normalizeFile (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
-      at normalizeFile.next (<anonymous>)
-      at run (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
-      at run.next (<anonymous>)
-      at transform (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transform.js:22:33)
-3:48:30 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:48:30 PM [vite] Internal server error: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx: Unexpected token (282:2)
-
-  280 |   const handlePreviewImage = 
-  281 |     
-> 282 |   const filteredImages = generatedImages.filter(image =>
-      |   ^
-  283 |     searchQuery === '' || 
-  284 |     image.prompt.toLowerCase().includes(searchQuery.toLowerCase())
-  285 |   );
-  Plugin: vite:react-babel
-  File: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx
-  280|    const handlePreviewImage = 
-  281|      
-  282|    const filteredImages = generatedImages.filter(image =>
-     |    ^
-  283|      searchQuery === '' || 
-  284|      image.prompt.toLowerCase().includes(searchQuery.toLowerCase())
-      at constructor (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:367:19)
-      at TypeScriptParserMixin.raise (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6627:19)
-      at TypeScriptParserMixin.unexpected (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6647:16)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11442:16)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4794:20)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-      at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9801:20)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:39
-      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
-      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:17)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13384:91)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseStatementListItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12747:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:61)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseBlock (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13297:10)
-      at TypeScriptParserMixin.parseFunctionBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12101:24)
-      at TypeScriptParserMixin.parseArrowExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12076:10)
-      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11686:12)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11326:23)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4794:20)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-      at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9801:20)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:39
-      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
-      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:17)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13384:91)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-3:48:36 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:52:15 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:52:20 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:52:20 PM [vite] Internal server error: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx: Missing initializer in const declaration. (281:14)
-
-  279 |   
-  280 |   const handlePreviewImage = (image: GeneratedImage) => {
-> 281 |     const img_
-      |               ^
-  282 |   };
-  283 |     
-  284 |   const filteredImages = generatedImages.filter(image =>
-  Plugin: vite:react-babel
-  File: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx
-  279|    
-  280|    const handlePreviewImage = (image: GeneratedImage) => {
-  281|      const img_
-     |                ^
-  282|    };
-  283|      
-      at constructor (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:367:19)
-      at TypeScriptParserMixin.raise (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6627:19)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13391:16)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseStatementListItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12747:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:61)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseBlock (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13297:10)
-      at TypeScriptParserMixin.parseFunctionBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12101:24)
-      at TypeScriptParserMixin.parseArrowExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12076:10)
-      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11686:12)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11326:23)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4794:20)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-      at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9801:20)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:39
-      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
-      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:17)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13384:91)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseStatementListItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12747:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:61)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseBlock (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13297:10)
-      at TypeScriptParserMixin.parseFunctionBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12101:24)
-      at TypeScriptParserMixin.parseArrowExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12076:10)
-      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11686:12)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11326:23)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4794:20)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-3:52:28 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:52:30 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:52:34 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:52:34 PM [vite] Internal server error: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx: Unexpected token (281:41)
-
-  279 |   
-  280 |   const handlePreviewImage = (image: GeneratedImage) => {
-> 281 |     const imgUrl = getFullImageUrl(image.)
-      |                                          ^
-  282 |   };
-  283 |     
-  284 |   const filteredImages = generatedImages.filter(image =>
-  Plugin: vite:react-babel
-  File: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx
-  279|    
-  280|    const handlePreviewImage = (image: GeneratedImage) => {
-  281|      const imgUrl = getFullImageUrl(image.)
-     |                                           ^
-  282|    };
-  283|      
-      at constructor (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:367:19)
-      at TypeScriptParserMixin.raise (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6627:19)
-      at TypeScriptParserMixin.unexpected (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6647:16)
-      at TypeScriptParserMixin.parseIdentifierName (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12204:12)
-      at TypeScriptParserMixin.parseIdentifier (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12182:23)
-      at TypeScriptParserMixin.parseMember (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11143:28)
-      at TypeScriptParserMixin.parseSubscript (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11119:21)
-      at TypeScriptParserMixin.parseSubscript (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9353:18)
-      at TypeScriptParserMixin.parseSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11089:19)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11080:17)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-      at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9801:20)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:39
-      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12427:12)
-      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:17)
-      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12494:17)
-      at TypeScriptParserMixin.parseExprListItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12176:18)
-      at TypeScriptParserMixin.parseCallExpressionArguments (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11247:22)
-      at TypeScriptParserMixin.parseCoverCallAndAsyncArrowHead (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11181:29)
-      at TypeScriptParserMixin.parseSubscript (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11115:19)
-      at TypeScriptParserMixin.parseSubscript (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9353:18)
-      at TypeScriptParserMixin.parseSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11089:19)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11080:17)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-      at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9801:20)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:39
-      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
-      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:17)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13384:91)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseStatementListItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12747:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:61)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseBlock (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13297:10)
-3:52:38 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:52:40 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:56:20 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:56:21 PM [vite] Internal server error: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx: Unexpected token (758:1)
-
-  756 |   />
-  757 | )}
-> 758 | </div>
-      |  ^
-  759 | );
-  760 | };
-  761 |
-  Plugin: vite:react-babel
-  File: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx
-  756|    />
-  757|  )}
-  758|  </div>
+  1  |  <<<<<<< HEAD
      |   ^
-  759|  );
-  760|  };
+  2  |  import React, { useState, useEffect, useRef } from 'react';
+  3  |  import {
       at constructor (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:367:19)
       at TypeScriptParserMixin.raise (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6627:19)
       at TypeScriptParserMixin.unexpected (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6647:16)
@@ -562,405 +45,6 @@ hmr update /src/index.css
       at TypeScriptParserMixin.jsxParseElementName (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4615:21)
       at TypeScriptParserMixin.jsxParseOpeningElementAt (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4691:22)
       at TypeScriptParserMixin.jsxParseElementAt (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4716:33)
-      at TypeScriptParserMixin.jsxParseElement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4779:17)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4792:19)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-      at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9790:39
-      at TypeScriptParserMixin.tryParse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6935:20)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9790:18)
-      at TypeScriptParserMixin.parseExpressionBase (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10779:23)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10775:39
-      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
-      at TypeScriptParserMixin.parseExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10775:17)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12895:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseModuleItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12744:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:36)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseProgram (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12625:10)
-      at TypeScriptParserMixin.parseTopLevel (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12615:25)
-      at TypeScriptParserMixin.parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:14492:10)
-      at TypeScriptParserMixin.parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10144:18)
-      at parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:14526:38)
-      at parser (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
-      at parser.next (<anonymous>)
-      at normalizeFile (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
-      at normalizeFile.next (<anonymous>)
-      at run (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
-      at run.next (<anonymous>)
-      at transform (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transform.js:22:33)
-      at transform.next (<anonymous>)
-      at step (/root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:261:32)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:273:13
-      at async.call.result.err.err (/root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:223:11)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:189:28
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/gensync-utils/async.js:67:7
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:113:33
-3:56:50 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:56:51 PM [vite] Internal server error: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx: Unexpected token (758:1)
-
-  756 |   />
-  757 | )}
-> 758 | </div>
-      |  ^
-  759 | );
-  760 | };
-  761 |
-  Plugin: vite:react-babel
-  File: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx
-  756|    />
-  757|  )}
-  758|  </div>
-     |   ^
-  759|  );
-  760|  };
-      at constructor (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:367:19)
-      at TypeScriptParserMixin.raise (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6627:19)
-      at TypeScriptParserMixin.unexpected (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6647:16)
-      at TypeScriptParserMixin.jsxParseIdentifier (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4599:12)
-      at TypeScriptParserMixin.jsxParseNamespacedName (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4606:23)
-      at TypeScriptParserMixin.jsxParseElementName (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4615:21)
-      at TypeScriptParserMixin.jsxParseOpeningElementAt (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4691:22)
-      at TypeScriptParserMixin.jsxParseElementAt (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4716:33)
-      at TypeScriptParserMixin.jsxParseElement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4779:17)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4792:19)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-      at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9790:39
-      at TypeScriptParserMixin.tryParse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6935:20)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9790:18)
-      at TypeScriptParserMixin.parseExpressionBase (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10779:23)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10775:39
-      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
-      at TypeScriptParserMixin.parseExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10775:17)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12895:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseModuleItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12744:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:36)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseProgram (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12625:10)
-      at TypeScriptParserMixin.parseTopLevel (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12615:25)
-      at TypeScriptParserMixin.parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:14492:10)
-      at TypeScriptParserMixin.parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10144:18)
-      at parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:14526:38)
-      at parser (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
-      at parser.next (<anonymous>)
-      at normalizeFile (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
-      at normalizeFile.next (<anonymous>)
-      at run (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
-      at run.next (<anonymous>)
-      at transform (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transform.js:22:33)
-      at transform.next (<anonymous>)
-      at step (/root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:261:32)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:273:13
-      at async.call.result.err.err (/root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:223:11)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:189:28
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/gensync-utils/async.js:67:7
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:113:33
-3:56:52 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:56:54 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:56:58 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:58:52 PM [vite] hmr update /src/components/ImagePreview.tsx
-hmr update /src/index.css
-3:59:12 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:59:12 PM [vite] Internal server error: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx: Missing initializer in const declaration. (282:17)
-
-  280 |   const handlePreviewImage = (image: GeneratedImage) => {
-  281 |       const imgUrl = getFullImageUrl(image.url);
-> 282 |       const previ
-      |                  ^
-  283 |       
-  284 |   };
-  285 |     
-  Plugin: vite:react-babel
-  File: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx
-  280|    const handlePreviewImage = (image: GeneratedImage) => {
-  281|        const imgUrl = getFullImageUrl(image.url);
-  282|        const previ
-     |                   ^
-  283|        
-  284|    };
-      at constructor (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:367:19)
-      at TypeScriptParserMixin.raise (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6627:19)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13391:16)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseStatementListItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12747:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:61)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseBlock (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13297:10)
-      at TypeScriptParserMixin.parseFunctionBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12101:24)
-      at TypeScriptParserMixin.parseArrowExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12076:10)
-      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11686:12)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11326:23)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4794:20)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-      at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9801:20)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:39
-      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
-      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:17)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13384:91)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseStatementListItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12747:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:61)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseBlock (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13297:10)
-      at TypeScriptParserMixin.parseFunctionBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12101:24)
-      at TypeScriptParserMixin.parseArrowExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12076:10)
-      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11686:12)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11326:23)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4794:20)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-3:59:14 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:59:14 PM [vite] Internal server error: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx: Unexpected token (284:2)
-
-  282 |       const previewer = 
-  283 |       
-> 284 |   };
-      |   ^
-  285 |     
-  286 |   const filteredImages = generatedImages.filter(image =>
-  287 |     searchQuery === '' || 
-  Plugin: vite:react-babel
-  File: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx
-  282|        const previewer = 
-  283|        
-  284|    };
-     |    ^
-  285|      
-  286|    const filteredImages = generatedImages.filter(image =>
-      at constructor (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:367:19)
-      at TypeScriptParserMixin.raise (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6627:19)
-      at TypeScriptParserMixin.unexpected (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6647:16)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11442:16)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4794:20)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-      at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9801:20)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:39
-      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
-      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:17)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13384:91)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseStatementListItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12747:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:61)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseBlock (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13297:10)
-      at TypeScriptParserMixin.parseFunctionBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12101:24)
-      at TypeScriptParserMixin.parseArrowExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12076:10)
-      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11686:12)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11326:23)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4794:20)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-      at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9801:20)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:39
-      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
-      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:17)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13384:91)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-3:59:17 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:59:24 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-3:59:28 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:00:15 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:00:30 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:00:34 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:00:36 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:00:38 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:00:44 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:00:44 PM [vite] Internal server error: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx: Missing initializer in const declaration. (283:26)
-
-  281 |   const handlePreviewImage = (image: GeneratedImage) => {
-  282 |       const imgUrl = getFullImageUrl(image.url);
-> 283 |       const ImagePreviewer
-      |                           ^
-  284 |   };
-  285 |     
-  286 |   const filteredImages = generatedImages.filter(image =>
-  Plugin: vite:react-babel
-  File: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx
-  281|    const handlePreviewImage = (image: GeneratedImage) => {
-  282|        const imgUrl = getFullImageUrl(image.url);
-  283|        const ImagePreviewer
-     |                            ^
-  284|    };
-  285|      
-      at constructor (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:367:19)
-      at TypeScriptParserMixin.raise (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6627:19)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13391:16)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseStatementListItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12747:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:61)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseBlock (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13297:10)
-      at TypeScriptParserMixin.parseFunctionBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12101:24)
-      at TypeScriptParserMixin.parseArrowExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12076:10)
-      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11686:12)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11326:23)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4794:20)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-      at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9801:20)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:39
-      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
-      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:17)
-      at TypeScriptParserMixin.parseVar (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13384:91)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
-      at TypeScriptParserMixin.parseVarStatement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
-      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
-      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
-      at TypeScriptParserMixin.parseStatementListItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12747:17)
-      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:61)
-      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
-      at TypeScriptParserMixin.parseBlock (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13297:10)
-      at TypeScriptParserMixin.parseFunctionBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12101:24)
-      at TypeScriptParserMixin.parseArrowExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12076:10)
-      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11686:12)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11326:23)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4794:20)
-      at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
-      at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
-      at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
-      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
-      at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-4:00:47 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:00:53 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:01:02 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:02:50 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:02:53 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:02:57 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:05:55 PM [vite] hmr update /src/components/ImagePreview.tsx
-hmr update /src/index.css
-4:05:57 PM [vite] hmr update /src/components/ImagePreview.tsx
-hmr update /src/index.css
-4:06:20 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:06:36 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:06:53 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:12:20 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:12:23 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:12:27 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:12:30 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:12:30 PM [vite] Internal server error: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx: JSX attributes must only be assigned a non-empty expression. (626:28)
-
-  624 |                     alt={image.prompt}
-  625 |                     className="w-full h-full object-cover"
-> 626 |                     onClick={}
-      |                             ^
-  627 |                   />
-  628 |                   
-  629 |                   {/* Selection Checkbox */}
-  Plugin: vite:react-babel
-  File: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx
-  624|                      alt={image.prompt}
-  625|                      className="w-full h-full object-cover"
-  626|                      onClick={}
-     |                              ^
-  627|                    />
-  628|                    
-      at constructor (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:367:19)
-      at TypeScriptParserMixin.raise (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6627:19)
-      at TypeScriptParserMixin.jsxParseAttributeValue (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4636:16)
-      at TypeScriptParserMixin.jsxParseAttribute (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4683:38)
-      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4697:28)
-      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10062:18)
-      at TypeScriptParserMixin.jsxParseOpeningElementAt (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4692:17)
-      at TypeScriptParserMixin.jsxParseElementAt (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4716:33)
-      at TypeScriptParserMixin.jsxParseElementAt (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4728:32)
-      at TypeScriptParserMixin.jsxParseElementAt (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4728:32)
       at TypeScriptParserMixin.jsxParseElement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4779:17)
       at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4789:19)
       at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
@@ -974,13 +58,58 @@ hmr update /src/index.css
       at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9790:39
       at TypeScriptParserMixin.tryParse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6935:20)
       at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9790:18)
-      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:39
-      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12427:12)
-      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10795:17)
-      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12494:17)
-      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11674:28)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11326:23)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4794:20)
+      at TypeScriptParserMixin.parseExpressionBase (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10779:23)
+      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10775:39
+      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
+      at TypeScriptParserMixin.parseExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10775:17)
+      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12895:23)
+      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
+      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
+      at TypeScriptParserMixin.parseModuleItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12744:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:36)
+      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
+      at TypeScriptParserMixin.parseProgram (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12625:10)
+      at TypeScriptParserMixin.parseTopLevel (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12615:25)
+      at TypeScriptParserMixin.parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:14492:10)
+      at TypeScriptParserMixin.parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10144:18)
+      at parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:14526:38)
+      at parser (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:261:32)
+      at /root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:273:13
+      at async.call.result.err.err (/root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:223:11)
+      at /root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:189:28
+      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/gensync-utils/async.js:67:7
+      at /root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:113:33
+8:17:54 PM [vite] Internal server error: /root/autodl-tmp/EasyVideo/frontend/src/pages/ImageToVideoPage.tsx: Unexpected token (1:1)
+
+> 1 | <<<<<<< HEAD
+    |  ^
+  2 | import React, { useState, useRef, useCallback, useEffect } from 'react';
+  3 | import {
+  4 |   Video,
+  Plugin: vite:react-babel
+  File: /root/autodl-tmp/EasyVideo/frontend/src/pages/ImageToVideoPage.tsx
+  1  |  <<<<<<< HEAD
+     |   ^
+  2  |  import React, { useState, useRef, useCallback, useEffect } from 'react';
+  3  |  import {
+      at constructor (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6627:19)
+      at TypeScriptParserMixin.unexpected (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6647:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4599:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4606:23)
+      at TypeScriptParserMixin.jsxParseElementName (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4615:21)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4691:22)
+      at TypeScriptParserMixin.jsxParseElementAt (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4716:33)
+      at TypeScriptParserMixin.jsxParseElement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4779:17)
+      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4789:19)
       at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
       at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
       at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
@@ -989,27 +118,146 @@ hmr update /src/index.css
       at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
       at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
       at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
-      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9801:20)
-      at TypeScriptParserMixin.parseFunctionBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12094:24)
-      at TypeScriptParserMixin.parseArrowExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12076:10)
-      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11686:12)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11326:23)
-      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4794:20)
+      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9790:39
+      at TypeScriptParserMixin.tryParse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6935:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9790:18)
+      at TypeScriptParserMixin.parseExpressionBase (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10779:23)
+      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10775:39
+      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
+      at TypeScriptParserMixin.parseExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10775:17)
+      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12895:23)
+      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
+      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
+      at TypeScriptParserMixin.parseModuleItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12744:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:36)
+      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
+      at TypeScriptParserMixin.parseProgram (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12625:10)
+      at TypeScriptParserMixin.parseTopLevel (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12615:25)
+      at TypeScriptParserMixin.parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:14492:10)
+      at TypeScriptParserMixin.parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10144:18)
+      at parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:14526:38)
+      at parser (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:261:32)
+      at /root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:273:13
+      at async.call.result.err.err (/root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:223:11)
+      at /root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:189:28
+      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/gensync-utils/async.js:67:7
+      at /root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:113:33
+Vim: Warning: Output is not to a terminal
+Vim: Warning: Input is not from a terminal
+[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;24r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?25l[24;1H<asyVideo/frontend/src/pages/ImageToVideoPage.tsx"[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m<c/pages/ImageToVideoPage.tsx" [noeol] 886L, 34343B[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[1;1H<<<<<<<[36m HEAD[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[m
+[32mimport[m [32mReact[m, [36m{[m useState, useRef, useCallback, useEffect [36m}[m [32mfrom[m '[32mreact[m';
+[32mimport[m [36m{[?2004l[>4;m[?2004h[>4;2m[m
+  Video,
+  Upload,
+  Play,
+  Pause,
+  Download,[?2004l[>4;m[?2004h[>4;2m
+  Trash2,
+  Settings,
+  Image [35mas[m [36mImageIcon[m,
+  FileVideo,[?2004l[>4;m[?2004h[>4;2m
+  RotateCcw,
+  Sparkles,
+  Grid,
+  List,
+  Search,
+  X,[?2004l[>4;m[?2004h[>4;2m
+  Eye,
+[36m}[m [32mfrom[m '[32mlucide-react[m';[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m
+[32mimport[m [36m{[m GenerationService [36m}[m [32mfrom[m '@/services/generation[32mService[m';[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m
+[32mimport[m [32mLoadingSpinner[m [32mfrom[m '@/components/[36mLoadingSpinner[m';[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m
+[32mimport[m [36m{[m ErrorDisplay [36m}[m [32mfrom[m '@/components/[36mErrorBoundary[m';[24;63H1,1[11CTop[1;1H[?25h[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[24;1H[?2004l[>4;m[?1004l[?2004l[?1l>[>4;m[?1049l[23;0;0tVim: Error reading input, exiting...
+Vim: Finished.
+[24;1H[23;2t[23;1t
+
+Could not open ImageToVideoPage.tsx in the editor.
+The editor process exited with an error: (code 1).
+
+8:19:30 PM [vite] 
+/root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx: Unexpected token (1:1)
+
+> 1 | <<<<<<< HEAD
+    |  ^
+  2 | import React, { useState, useEffect, useRef } from 'react';
+  3 | import {
+  4 |   Image,
+8:19:32 PM [vite] Internal server error: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx: Unexpected token (1:1)
+
+> 1 | <<<<<<< HEAD
+    |  ^
+  2 | import React, { useState, useEffect, useRef } from 'react';
+  3 | import {
+  4 |   Image,
+  Plugin: vite:react-babel
+  File: /root/autodl-tmp/EasyVideo/frontend/src/pages/TextToImagePage.tsx
+  1  |  <<<<<<< HEAD
+     |   ^
+  2  |  import React, { useState, useEffect, useRef } from 'react';
+  3  |  import {
+      at constructor (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6627:19)
+      at TypeScriptParserMixin.unexpected (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6647:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4599:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4606:23)
+      at TypeScriptParserMixin.jsxParseElementName (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4615:21)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4691:22)
+      at TypeScriptParserMixin.jsxParseElementAt (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4716:33)
+      at TypeScriptParserMixin.jsxParseElement (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4779:17)
+      at TypeScriptParserMixin.parseExprAtom (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:4789:19)
       at TypeScriptParserMixin.parseExprSubscripts (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
       at TypeScriptParserMixin.parseUpdate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
       at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
       at TypeScriptParserMixin.parseMaybeUnary (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
       at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
       at TypeScriptParserMixin.parseExprOps (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
-4:12:34 PM [vite] hmr update /src/pages/TextToImagePage.tsx
+      at TypeScriptParserMixin.parseMaybeConditional (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
+      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9790:39
+      at TypeScriptParserMixin.tryParse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:6935:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9790:18)
+      at TypeScriptParserMixin.parseExpressionBase (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10779:23)
+      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10775:39
+      at TypeScriptParserMixin.allowInAnd (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
+      at TypeScriptParserMixin.parseExpression (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10775:17)
+      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12895:23)
+      at TypeScriptParserMixin.parseStatementContent (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
+      at TypeScriptParserMixin.parseStatementLike (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
+      at TypeScriptParserMixin.parseModuleItem (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12744:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13316:36)
+      at TypeScriptParserMixin.parseBlockBody (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
+      at TypeScriptParserMixin.parseProgram (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12625:10)
+      at TypeScriptParserMixin.parseTopLevel (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:12615:25)
+      at TypeScriptParserMixin.parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:14492:10)
+      at TypeScriptParserMixin.parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:10144:18)
+      at parse (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/parser/lib/index.js:14526:38)
+      at parser (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:261:32)
+      at /root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:273:13
+      at async.call.result.err.err (/root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:223:11)
+      at /root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:189:28
+      at /root/autodl-tmp/EasyVideo/frontend/node_modules/@babel/core/lib/gensync-utils/async.js:67:7
+      at /root/autodl-tmp/EasyVideo/frontend/node_modules/gensync/index.js:113:33
+8:19:59 PM [vite] 
+(node:22905) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+9:00:49 PM [vite] hmr update /src/pages/ImageToVideoPage.tsx
 hmr update /src/index.css
-4:12:37 PM [vite] hmr update /src/pages/TextToImagePage.tsx
+9:01:06 PM [vite] hmr update /src/pages/ImageToVideoPage.tsx
 hmr update /src/index.css
-4:12:39 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:12:43 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:12:48 PM [vite] hmr update /src/pages/TextToImagePage.tsx
-hmr update /src/index.css
-4:13:03 PM [vite] hmr update /src/pages/TextToImagePage.tsx
+9:01:25 PM [vite] hmr update /src/pages/ImageToVideoPage.tsx
 hmr update /src/index.css

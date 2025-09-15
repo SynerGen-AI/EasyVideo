@@ -5,79 +5,17 @@ import fs from 'fs-extra';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import { EventEmitter } from 'events';
+import { getTypeFromJson } from '../services/storage';
+import { TasksPool, Task} from '../services/task';
+import { JSON_IMAGE_PATH, JSON_VIDEO_PATH } from '../config/storage_config';
+
 
 const router = express.Router();
 
-// 假设本地存储路径
-const STORAGE_PATH = {
-  video: path.join(__dirname, 'video'),
-  image: path.join(__dirname, 'image'),
-    storyboard: path.join(__dirname, 'storyboard'),
-};
-
-const JSON_PATH = "./task_completed.json";
-
-interface Task {
-    id: string;
-    status: 'pending' | 'processing' | 'completed' | 'failed';
-    type: string;
-    progress: number;
-    prompt?: string;
-    result?: any;
-    error?: string;
-    created_at: string;
-    updated_at: string;
-}
-
-const initialize_taskmap = (jsonPath: string): Map<string, Task> => {
-    if (fs.existsSync(jsonPath)) {
-        const data = fs.readFileSync(jsonPath, 'utf8');
-        if (data.trim().length === 0) return new Map(); // 空文件
-        const obj = JSON.parse(data);
-        console.log("Tasks pool initialize successfully read from JSON");
-        return new Map(Object.entries(obj)); // 转 Map
-    }
-    return new Map();
-}
-
-const tasks = initialize_taskmap(JSON_PATH);
-
-/**
- * 将 Map 中指定 taskId 的任务写入 JSON 文件
- * @param tasks Map<string, Task> 所有任务
- * @param taskId 要写入的任务ID
- * @param jsonPath JSON 文件路径
- */
-const saveTaskById = (tasks: Map<string, Task>, taskId: string, jsonPath: string = JSON_PATH) => {
-    if (!tasks.has(taskId)) {
-        console.warn(`TaskId ${taskId} 不存在`);
-        return;
-    }
-
-    let jsonData: Record<string, Task> = {};
-
-    // 如果文件存在，读取已有数据
-    if (fs.existsSync(jsonPath)) {
-        const raw = fs.readFileSync(jsonPath, 'utf8');
-        if (raw.trim().length > 0) {
-            jsonData = JSON.parse(raw);
-        }
-    }
-
-    // 更新指定任务
-    jsonData[taskId] = tasks.get(taskId)!;
-
-    // 写回文件
-    fs.writeFileSync(jsonPath, JSON.stringify(jsonData, null, 2), 'utf8');
-    console.log(`Task ${taskId} 已保存到 ${jsonPath}`);
-};
+const tasks = new TasksPool();
 
 
 const taskEmitter = new EventEmitter();
-
-// taskEmitter.on('taskUpdate', (taskId: string) => {
-//     saveTaskById(tasks, taskId);
-// });
 
 // Task cleanup configuration
 const TASK_CLEANUP_INTERVAL = 30 * 60 * 1000; // 30 minutes
@@ -85,27 +23,7 @@ const TASK_RETENTION_TIME = 60 * 60 * 1000; // 1 hour
 
 // Periodic task cleanup to prevent memory leaks
 setInterval(() => {
-  const now = new Date().getTime();
-  const tasksToDelete: string[] = [];
-  
-  tasks.forEach((task, taskId) => {
-    const taskTime = new Date(task.updated_at).getTime();
-    const isOld = now - taskTime > TASK_RETENTION_TIME;
-    const isFinished = task.status === 'completed' || task.status === 'failed';
-    
-    if (isOld && isFinished) {
-      tasksToDelete.push(taskId);
-    }
-  });
-  
-  tasksToDelete.forEach(taskId => {
-    console.log(`Cleaning up old task: ${taskId}`);
-    tasks.delete(taskId);
-  });
-  
-  if (tasksToDelete.length > 0) {
-    console.log(`Cleaned up ${tasksToDelete.length} old tasks`);
-  }
+  tasks.cleanTasks(TASK_RETENTION_TIME)
 }, TASK_CLEANUP_INTERVAL);
 
 // Configure multer for file uploads
@@ -125,25 +43,6 @@ const upload = multer({
 
 const AI_SERVICE_URL = process.env.AI_SERVICE_URL || 'http://localhost:8000';
 
-// Helper function to safely remove task from pool, if Completed save to Json so we can read next time
-function removeTaskFromPool(taskId: string, reason: string = 'completed') {
-    const task = tasks.get(taskId);
-    if (task) {
-        console.log(`Tasks pool removing task ${taskId} from pool (reason: ${reason})`);
-        if (reason === 'completed') {
-            console.log(`Tasks pool write task ${taskId} to JSON for it completed`);
-            saveTaskById(tasks, taskId, JSON_PATH);
-        }
-        tasks.delete(taskId);
-    }
-}
-  
-
-// Helper function to check if task exists in pool
-function isTaskInPool(taskId: string): boolean {
-  return tasks.has(taskId);
-}
-
 // Server-Sent Events endpoint for progress updates
 router.get('/progress/:taskId', (req, res) => {
   const { taskId } = req.params;
@@ -158,8 +57,8 @@ router.get('/progress/:taskId', (req, res) => {
   });
 
   // Send initial task status
-  if (isTaskInPool(taskId)) {
-    const task = tasks.get(taskId)!;
+  if (tasks.isTaskInPool(taskId)) {
+    const task = tasks.getTask(taskId)!;
     res.write(`data: ${JSON.stringify(task)}\n\n`);
   } else {
     res.write(`data: ${JSON.stringify({ error: 'Task not found' })}\n\n`);
@@ -267,7 +166,7 @@ router.post('/text-to-image', async (req, res) => {
       updated_at: new Date().toISOString()
     };
     
-    tasks.set(taskId, task);
+    tasks.addTask(task);
     
     // Return task ID immediately
     res.json({
@@ -300,7 +199,7 @@ router.post('/text-to-image', async (req, res) => {
 
 // Async function to process image generation
 async function processImageGeneration(taskId: string, params: any) {
-  if (!isTaskInPool(taskId)) return;
+  if (!tasks.isTaskInPool(taskId)) return;
   
   try {
     // Ensure output directory exists
@@ -308,11 +207,11 @@ async function processImageGeneration(taskId: string, params: any) {
     await fs.ensureDir(outputDir);
     
     // Update task status to processing
-    const task = tasks.get(taskId)!;
+    const task = tasks.getTask(taskId)!;
     task.status = 'processing';
     task.progress = 10;
     task.updated_at = new Date().toISOString();
-    tasks.set(taskId, task);
+    tasks.addTask(task);
     taskEmitter.emit('progress', { taskId, ...task });
     
     // Real progress updates will be handled by AI service callback
@@ -320,7 +219,7 @@ async function processImageGeneration(taskId: string, params: any) {
     const progressInterval = setInterval(async () => {
       try {
         // Check if task still exists in our pool before querying AI service
-        if (!isTaskInPool(taskId)) {
+        if (!tasks.isTaskInPool(taskId)) {
           console.log(`Task ${taskId} no longer exists in task pool, stopping progress monitoring`);
           clearInterval(progressInterval);
           return;
@@ -328,7 +227,7 @@ async function processImageGeneration(taskId: string, params: any) {
         
         const progressResponse = await axios.get(`${AI_SERVICE_URL}/task/progress/${taskId}`);
         if (progressResponse.data && progressResponse.data.progress !== undefined) {
-          const task = tasks.get(taskId)!;
+          const task = tasks.getTask(taskId)!;
           // Use actual progress from AI service, don't cap at 95%
           task.progress = progressResponse.data.progress;
           task.updated_at = new Date().toISOString();
@@ -337,14 +236,14 @@ async function processImageGeneration(taskId: string, params: any) {
           if (progressResponse.data.status === 'failed') {
             task.status = 'failed';
             task.error = progressResponse.data.error || 'AI服务生成失败';
-            tasks.set(taskId, task);
+            tasks.addTask(task);
             taskEmitter.emit('progress', { taskId, ...task });
-            removeTaskFromPool(taskId, 'failed');
+            !tasks.isTaskInPoolFilter(taskId, 'failed');
             clearInterval(progressInterval);
             return;
           }
           
-          tasks.set(taskId, task);
+          tasks.addTask(task);
           taskEmitter.emit('progress', { taskId, ...task });
           
           // If AI service reports 100% progress, mark as completed
@@ -357,13 +256,13 @@ async function processImageGeneration(taskId: string, params: any) {
          // If AI service returns 404 or task not found, remove from our pool and stop monitoring
          if (error.message && error.message.includes('Task not found')) {
            console.log(`Task ${taskId} not found in AI service, marking as failed and removing from pool`);
-           if (isTaskInPool(taskId)) {
-             const task = tasks.get(taskId)!;
+           if (tasks.isTaskInPool(taskId)) {
+             const task = tasks.getTask(taskId)!;
              task.status = 'failed';
              task.error = '任务在AI服务中不存在或已被取消';
-             tasks.set(taskId, task);
+             tasks.addTask(task);
              taskEmitter.emit('progress', { taskId, ...task });
-             removeTaskFromPool(taskId, 'not_found_in_ai_service');
+             !tasks.isTaskInPoolFilter(taskId, 'cancelled');
            }
            clearInterval(progressInterval);
            return;
@@ -405,7 +304,7 @@ async function processImageGeneration(taskId: string, params: any) {
     clearInterval(progressInterval);
 
     // Update task with results
-    const finalTask = tasks.get(taskId)!;
+    const finalTask = tasks.getTask(taskId)!;
     finalTask.status = 'completed';
     finalTask.progress = 100;
     finalTask.result = {
@@ -420,7 +319,7 @@ async function processImageGeneration(taskId: string, params: any) {
       }))
     };
     finalTask.updated_at = new Date().toISOString();
-    tasks.set(taskId, finalTask);
+    tasks.addTask(finalTask);
     
     // Save to project if project_id provided
     if (params.project_id) {
@@ -428,17 +327,17 @@ async function processImageGeneration(taskId: string, params: any) {
     }
     
     taskEmitter.emit('progress', { taskId, ...finalTask });
-    removeTaskFromPool(taskId, 'completed');
-    removeTaskFromPool(taskId, 'completed');
+    !tasks.isTaskInPoolFilter(taskId, 'completed');
+    !tasks.isTaskInPoolFilter(taskId, 'completed');
     
   } catch (error) {
     console.error('Error processing image generation:', error);
-    if (!isTaskInPool(taskId)) return;
-    const task = tasks.get(taskId)!;
+    if (!tasks.isTaskInPool(taskId)) return;
+    const task = tasks.getTask(taskId)!;
     task.status = 'failed';
     task.error = error instanceof Error ? error.message : 'Unknown error';
     task.updated_at = new Date().toISOString();
-    tasks.set(taskId, task);
+    tasks.addTask(task);
     taskEmitter.emit('progress', { taskId, ...task });
   }
 }
@@ -456,7 +355,7 @@ router.delete('/task/:taskId', async (req, res) => {
     }
     
     // Check if task exists
-    if (!isTaskInPool(taskId)) {
+    if (!tasks.isTaskInPool(taskId)) {
       return res.status(404).json({
         success: false,
         error: 'Task not found'
@@ -464,7 +363,7 @@ router.delete('/task/:taskId', async (req, res) => {
     }
     
     // Remove task from memory using helper function
-    removeTaskFromPool(taskId, 'cancelled');
+    !tasks.isTaskInPoolFilter(taskId, 'cancelled');
     tasks.delete(taskId);
     
     // Emit deletion event for any listeners
@@ -495,7 +394,7 @@ router.post('/image-to-video', upload.single('image'), async (req, res) => {
       motion_prompt,
       negative_prompt = "static, blurry, low quality",
       fps = 15,
-      duration = 4,
+      num_frames = 4,
       seed,
       tiled = true,
       num_inference_steps = 20,
@@ -558,7 +457,7 @@ router.post('/image-to-video', upload.single('image'), async (req, res) => {
       updated_at: new Date().toISOString()
     };
     
-    tasks.set(taskId, task);
+    tasks.addTask(task);
     
     // Return task ID immediately
     res.json({
@@ -575,7 +474,7 @@ router.post('/image-to-video', upload.single('image'), async (req, res) => {
       prompt,
       negative_prompt,
       fps,
-      duration,
+      num_frames,
       seed,
       tiled,
       num_inference_steps,
@@ -596,15 +495,15 @@ router.post('/image-to-video', upload.single('image'), async (req, res) => {
 
 // Async function to process video generation
 async function processVideoGeneration(taskId: string, params: any) {
-  if (!isTaskInPool(taskId)) return;
+  if (!tasks.isTaskInPool(taskId)) return;
 
   try {
     // 1️⃣ 本地任务初始化为 queued
-    let task = tasks.get(taskId)!;
+    let task = tasks.getTask(taskId)!;
     task.status = 'pending';
     task.progress = 0;
     task.updated_at = new Date().toISOString();
-    tasks.set(taskId, task);
+    tasks.addTask(task);
     taskEmitter.emit('progress', { taskId, ...task });
 
     // 2️⃣ 构造请求数据（包含本地生成的 taskId）
@@ -613,7 +512,7 @@ async function processVideoGeneration(taskId: string, params: any) {
       prompt: params.prompt || '',
       negative_prompt: params.negative_prompt,
       fps: params.fps,
-      duration: params.duration,
+      num_frames: params.num_frames,
       seed: params.seed || Math.floor(Math.random() * 1000000),
       tiled: params.tiled,
       num_inference_steps: params.num_inference_steps,
@@ -640,17 +539,17 @@ async function processVideoGeneration(taskId: string, params: any) {
     if (response.status !==200) {
       console.error('AI service task creation failed:', response.data);
       task.status = 'failed';
-      tasks.set(taskId, task);
+      tasks.addTask(task);
       throw new Error((response.data && response.data.error) || 'AI 服务任务创建失败');
     }
     else console.log('AI service task creation response:', response.data);
 
     // 4️⃣ 后端确认任务创建成功 → 更新状态为 processing
-    task = tasks.get(taskId)!;
+    task = tasks.getTask(taskId)!;
     task.status = 'processing';
     task.progress = 5;
     task.updated_at = new Date().toISOString();
-    tasks.set(taskId, task);
+    tasks.addTask(task);
     taskEmitter.emit('progress', { taskId, ...task });
 
     // 5️⃣ 启动轮询进度
@@ -661,7 +560,7 @@ async function processVideoGeneration(taskId: string, params: any) {
         if (progressResponse.data) {
           const { progress, status, error, video_path } = progressResponse.data;
 
-          const task = tasks.get(taskId)!;
+          const task = tasks.getTask(taskId)!;
           task.progress = progress || task.progress;
             task.updated_at = new Date().toISOString();
             console.log('AI-services response: ', progressResponse.data);
@@ -670,9 +569,9 @@ async function processVideoGeneration(taskId: string, params: any) {
           if (status === 'failed') {
             task.status = 'failed';
             task.error = error || 'AI 服务生成失败';
-            tasks.set(taskId, task);
+            tasks.addTask(task);
             taskEmitter.emit('progress', { taskId, ...task });
-            removeTaskFromPool(taskId, 'failed');
+            !tasks.isTaskInPoolFilter(taskId, 'failed');
             clearInterval(progressInterval);
             return;
           }
@@ -694,18 +593,19 @@ async function processVideoGeneration(taskId: string, params: any) {
                 created_at: new Date().toISOString(),
               }],
             };
-            tasks.set(taskId, task);
+            tasks.addTask(task);
+            tasks.removeTaskFromPool(task.id, 'completed');
 
             if (params.project_id) {
               await saveToProject(params.project_id, 'video', task.result);
             }
 
             taskEmitter.emit('progress', { taskId, ...task });
-            removeTaskFromPool(taskId, 'completed');
+            !tasks.isTaskInPoolFilter(taskId, 'completed');
             clearInterval(progressInterval);
           } else {
             // 生成中
-            tasks.set(taskId, task);
+            tasks.addTask(task);
             taskEmitter.emit('progress', { taskId, ...task });
           }
         }
@@ -716,14 +616,14 @@ async function processVideoGeneration(taskId: string, params: any) {
 
   } catch (error) {
     console.error('Error processing video generation:', error);
-    if (!isTaskInPool(taskId)) return;
-    const task = tasks.get(taskId)!;
+    if (!tasks.isTaskInPool(taskId)) return;
+    const task = tasks.getTask(taskId)!;
     task.status = 'failed';
     task.error = error instanceof Error ? error.message : 'Unknown error';
     task.updated_at = new Date().toISOString();
-    tasks.set(taskId, task);
+    tasks.addTask(task);
     taskEmitter.emit('progress', { taskId, ...task });
-    removeTaskFromPool(taskId, 'failed');
+    !tasks.isTaskInPoolFilter(taskId, 'failed');
   }
 }
 
@@ -811,7 +711,7 @@ router.post('/storyboard', async (req, res) => {
       updated_at: new Date().toISOString()
     };
     
-    tasks.set(taskId, task);
+    tasks.addTask(task);
     
     // Process storyboard generation asynchronously
     processStoryboardGeneration(taskId, {
@@ -879,8 +779,8 @@ router.post('/upload-image', upload.single('image'), async (req, res) => {
 
 // Process storyboard generation
 async function processStoryboardGeneration(taskId: string, params: any) {
-  if (!isTaskInPool(taskId)) return;
-  const task = tasks.get(taskId)!;
+  if (!tasks.isTaskInPool(taskId)) return;
+  const task = tasks.getTask(taskId)!;
   
   try {
     task.status = 'processing';
@@ -918,20 +818,18 @@ async function processStoryboardGeneration(taskId: string, params: any) {
     task.updated_at = new Date().toISOString();
     
     taskEmitter.emit('progress', { taskId, progress: 100, status: 'completed', result: task.result });
-    removeTaskFromPool(taskId, 'completed');
+    !tasks.isTaskInPoolFilter(taskId, 'completed');
   } catch (error) {
     console.error(`Error processing storyboard generation for task ${taskId}:`, error);
-    if (!isTaskInPool(taskId)) return;
+    if (!tasks.isTaskInPool(taskId)) return;
     task.status = 'failed';
     task.error = error instanceof Error ? error.message : 'Unknown error';
     task.updated_at = new Date().toISOString();
     
     taskEmitter.emit('progress', { taskId, progress: 0, status: 'failed', error: task.error });
-    removeTaskFromPool(taskId, 'failed');
+    !tasks.isTaskInPoolFilter(taskId, 'failed');
   }
 }
-
-// Helper function to save results to project
 
 // Get task status
 router.get('/task/:taskId', async (req, res) => {
@@ -1043,51 +941,19 @@ router.get('/queue/status', async (req, res) => {
   }
 });
 
-// download generated files
-router.get('/generation/:type/:id/download', async (req: Request, res: Response) => {
-  const { type, id } = req.params;
-  const filename = req.query.filename as string | undefined;
 
-  const dir = STORAGE_PATH[type as keyof typeof STORAGE_PATH];
-  if (!dir) return res.status(400).send('Invalid type');
-
-  // 推断文件名
-  let ext = '';
-  switch (type) {
-    case 'video': ext = '.mp4'; break;
-    case 'image': ext = '.png'; break;
-    case 'storyboard': ext = '.json'; break;
-  }
-
-  const filePath = path.join(dir, `${id}${ext}`);
-  if (!fs.existsSync(filePath)) return res.status(404).send('File not found');
-
-  res.setHeader('Content-Disposition', `attachment; filename="${filename || id + ext}"`);
-  const mimeType = type === 'video' ? 'video/mp4' : type === 'image' ? 'image/png' : 'application/json';
-  res.setHeader('Content-Type', mimeType);
-
-  const stream = fs.createReadStream(filePath);
-  stream.pipe(res);
+//get storage video
+router.get("/storage/video", async (req: Request, res: Response) => {
+  console.log("Storage: return stored videos");
+  const result = await getTypeFromJson("image_to_video", JSON_VIDEO_PATH);
+  return res.json({data: result });
 });
 
-// delete generated files
-router.delete('/generation/:type/:id', async (req: Request, res: Response) => {
-  const { type, id } = req.params;
-  const dir = STORAGE_PATH[type as keyof typeof STORAGE_PATH];
-  if (!dir) return res.status(400).send('Invalid type');
-
-  let ext = '';
-  switch (type) {
-    case 'video': ext = '.mp4'; break;
-    case 'image': ext = '.png'; break;
-    case 'storyboard': ext = '.json'; break;
-  }
-
-  const filePath = path.join(dir, `${id}${ext}`);
-  if (!fs.existsSync(filePath)) return res.status(404).send('File not found');
-
-  fs.unlinkSync(filePath);
-  res.json({ success: true });
+//get storage image
+router.get("/storage/image", async (req: Request, res: Response) => {
+  const result = await getTypeFromJson("text_to_image", JSON_IMAGE_PATH);
+  console.log("Storage: return stored images", result);
+  return res.json({data: result });
 });
 
 async function saveToProject(projectId: string, type: string, data: any) {

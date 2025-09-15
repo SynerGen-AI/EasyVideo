@@ -9,15 +9,11 @@ import sys
 
 logger = logging.getLogger(__name__)
 
-try:
-    from transformers import Qwen2_5_VLForConditionalGeneration, AutoTokenizer, AutoProcessor
-    from qwen_vl_utils import process_vision_info
-    import torch
-    import gc
-    TRANSFORMERS_AVAILABLE = True
-except ImportError as e:
-    logger.warning(f"Transformers not available: {e}")
-    TRANSFORMERS_AVAILABLE = False
+from transformers import Qwen2_5_VLForConditionalGeneration, AutoTokenizer, AutoProcessor
+from qwen_vl_utils import process_vision_info
+import torch
+import gc
+TRANSFORMERS_AVAILABLE = True
 
 class PromptOptimizer:
     """Prompt优化器，用于优化用户输入的prompt"""
@@ -90,7 +86,7 @@ class PromptOptimizer:
             self.processor = None
     
     async def optimize(self, prompt: str, optimization_type: str = "通用型", 
-                      style_preferences: List[str] = None, task_type: str = "image") -> str:
+                      style_preferences: List[str] = [], task_type: str = "image") -> str:
         """优化prompt"""
         logger.info(f"Optimizing prompt: {prompt}")
         logger.info(f"Optimization type: {optimization_type}")
@@ -121,6 +117,8 @@ class PromptOptimizer:
     
     async def _optimize_with_model(self, prompt: str, optimization_type: str, style_preferences: List[str], task_type: str = "image") -> str:
         """使用Qwen2.5-VL模型优化提示词"""
+        if self.processor == None or self.model == None:
+            raise RuntimeError("Model or processor not initialized.")
         try:
             # 根据任务类型构建不同的用户消息
             if task_type == "image":
@@ -130,7 +128,7 @@ class PromptOptimizer:
                 if style_preferences:
                     user_message += f"\n风格偏好：{', '.join(style_preferences)}"
                 
-                user_message += "\n\n请将其优化为详细、具体、适合AI图像生成的英文提示词。包含具体的视觉细节（颜色、材质、光影、构图等）和画质提升关键词。请直接输出优化后的英文提示词，不要包含其他解释。"
+                user_message += "\n\n请尽量用名词,形容词(彼此之间用逗号隔开)的方式, 将其优化为详细、具体、适合AI图像生成的英文提示词。包含具体的视觉细节包含,人物主体, 构图, 情绪等。请直接输出优化后的英文提示词，不要包含其他解释, 返回的单词不要用*号加粗。"
             else:  # video
                 user_message = f"请优化这个视频生成提示词：{prompt}"
                 if optimization_type != "通用型":
@@ -138,7 +136,7 @@ class PromptOptimizer:
                 if style_preferences:
                     user_message += f"\n风格偏好：{', '.join(style_preferences)}"
                 
-                user_message += "\n\n请将其优化为详细、具体、适合AI视频生成的英文提示词。包含动作描述、运动轨迹、场景转换、摄像机运动（推拉摇移）等动态元素。请直接输出优化后的英文提示词，不要包含其他解释。"
+                user_message += "\n\n请将其优化为详细、具体、适合AI视频生成的中文提示词。包含动作描述、运动轨迹、场景转换、摄像机运动（推拉摇移）等动态元素。请直接输出优化后的中文提示词，不要包含其他解释。"
             
             # 构建对话消息（纯文本模式）
             messages = [
@@ -158,7 +156,7 @@ class PromptOptimizer:
             )
             
             # 处理视觉信息（这里没有图像，所以为空）
-            image_inputs, video_inputs = process_vision_info(messages)
+            image_inputs, video_inputs = process_vision_info(messages) #type: ignore
             
             # 使用processor处理输入
             inputs = self.processor(
