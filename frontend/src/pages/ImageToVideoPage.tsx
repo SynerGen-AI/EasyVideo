@@ -79,8 +79,30 @@ const exampleVideo: GeneratedVideo = {
 const ImageToVideoPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+
   const [motionPrompt, setMotionPrompt] = useState('');
   const [settings, setSettings] = useState<VideoSettings>(defaultSettings);
+  //网页加载时读缓存
+  useEffect(() => {
+    const savedMotionPrompt = localStorage.getItem('MotionPrompt');
+    if (savedMotionPrompt) {
+      setMotionPrompt(savedMotionPrompt);
+    }
+    const savedNegativePrompt = localStorage.getItem('NegativePrompt');
+    if (savedNegativePrompt) {
+      setSettings(prev => ({...prev, negative_prompt: savedNegativePrompt}));
+    }
+  }, []);
+  //输入框内容变化时写缓存
+  const onChange_Pos = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMotionPrompt(e.target.value);
+    localStorage.setItem('MotionPrompt', e.target.value);
+  };
+  const onChange_Neg = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setSettings(prev => ({...prev, negative_prompt: e.target.value}));
+    localStorage.setItem('NegativePrompt', e.target.value);
+  };
+
   const [generating, setGenerating] = useState(false);
   // const [showSettings, setShowSettings] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -496,7 +518,7 @@ const ImageToVideoPage: React.FC = () => {
             </span>
             <textarea
               value={motionPrompt}
-              onChange={(e) => setMotionPrompt(e.target.value)}
+              onChange={onChange_Pos}
               // placeholder="描述您希望图像中的运动效果，例如：轻柔的风吹动头发，水面波纹荡漾，云朵缓慢飘动"
               className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
               rows={3}
@@ -620,7 +642,8 @@ const ImageToVideoPage: React.FC = () => {
                   </label>
                   <textarea
                     value={settings.negative_prompt}
-                    onChange={(e) => setSettings(prev => ({ ...prev, negative_prompt: e.target.value }))}
+                    // onChange={(e) => setSettings(prev => ({ ...prev, negative_prompt: e.target.value }))}
+                    onChange={onChange_Neg}
                     placeholder="描述不希望出现在视频中的内容..."
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white resize-none"
                     rows={2}
