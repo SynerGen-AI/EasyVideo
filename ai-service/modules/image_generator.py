@@ -227,13 +227,13 @@ class ImageGenerator:
             
             for i in range(num_images):
                 current_seed = seed + i
-                logger.info(f"Generating image {i+1}/{num_images} with seed {current_seed}")
-                
-                # 更新进度：30% + (i / num_images) * 60%
+                logger.info(f"Generating image {i + 1}/{num_images} with seed {current_seed}")
+
+                # 更新进度：30% + (i / num_images) * 70%
                 if progress_callback:
-                    progress = 30 + int((i / num_images) * 60)
-                    progress_callback(progress, f"generating_image_{i+1}")
-                
+                    progress = 30 + int((i / num_images) * 70)
+                    progress_callback(progress, f"generating_image_{i + 1}")
+
                 if self.model_type == "flux_krea":
                     gen = torch.Generator(device="cuda").manual_seed(current_seed)
                     image = self.pipe(
@@ -245,6 +245,7 @@ class ImageGenerator:
                         num_inference_steps=inference_steps,
                         num_images_per_prompt = num_images,
                         guidance_scale=CFG_scale,
+                        callback_on_step_end=lambda pipe,step_idx, t,callback_kwarg: (progress_callback(round(((step_idx+1)/inference_steps + i) * 70 / num_images) + 30, "processing"),{})[1]
                     ).images[0]
                 elif self.model_type == "flux_kontext":
                     image = self.pipe(
@@ -255,7 +256,8 @@ class ImageGenerator:
                         height=height,
                         embedded_guidance=4.5,
                         num_inference_steps = inference_steps,
-                        cfg_scale=2.0 if negative_prompt else None
+                        cfg_scale=2.0 if negative_prompt else None,
+                        callback_on_step_end=lambda pipe,step_idx, t,callback_kwarg: (progress_callback(round(((step_idx+1)/inference_steps + i) * 70 / num_images) + 30, "processing"),{})[1]
                     )
                 else:
                     raise Exception(f"Unknown model type: {self.model_type}")
@@ -413,5 +415,5 @@ if __name__ == "__main__":
         # 测试时间估算
         time_est = generator.estimate_generation_time(2, 1024, 1024)
         print(f"Estimated time: {time_est} seconds")
-    
-    asyncio
+
+    asyncio.run(test_generator())
