@@ -303,8 +303,8 @@ async def generate_image(request: ImageGenerateRequest):
         # Update progress callback
         def progress_callback(progress: int, status: str = "processing"):
             task_progress[request.task_id] = {"progress": progress, "status": status}
-        
-        images = await generator.generate(
+
+        images = await asyncio.get_running_loop().run_in_executor(None, lambda: asyncio.run(generator.generate(
             prompt=request.prompt,
             negative_prompt=request.negative_prompt,
             width=request.width,
@@ -314,6 +314,7 @@ async def generate_image(request: ImageGenerateRequest):
             output_dir=request.output_dir,
             task_id=request.task_id,
             progress_callback=progress_callback
+        ))
         )
         
         # Mark as completed
